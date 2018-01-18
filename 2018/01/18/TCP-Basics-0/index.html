@@ -43,7 +43,7 @@
     
     <title>
         
-            TCP 连接建立与结束 | 
+            TCP-Basics | 
         
         wusp Blog
     </title>
@@ -215,7 +215,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="wusp Blog">
-    <meta name="msapplication-starturl" content="http://yoursite.com/2018/01/17/TCP-建立与结束/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/01/18/TCP-Basics-0/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="wusp Blog">
@@ -230,16 +230,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/2018/01/17/TCP-建立与结束/">
+    <meta property="og:url" content="http://yoursite.com/2018/01/18/TCP-Basics-0/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="TCP 连接建立与结束 | wusp Blog">
+    <meta property="og:title" content="TCP-Basics | wusp Blog">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="">
     
 
     
-        <meta property="article:published_time" content="Wed Jan 17 2018 00:00:00 GMT+0800">
-        <meta property="article:modified_time" content="Thu Jan 18 2018 08:57:31 GMT+0800">
+        <meta property="article:published_time" content="Thu Jan 18 2018 10:47:28 GMT+0800">
+        <meta property="article:modified_time" content="Thu Jan 18 2018 10:57:51 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -247,7 +247,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2018/01/17/TCP-建立与结束/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/01/18/TCP-Basics-0/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -259,10 +259,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yoursite.com/2018/01/17/TCP-建立与结束/index.html",
-    "headline": "TCP 连接建立与结束",
-    "datePublished": "Wed Jan 17 2018 00:00:00 GMT+0800",
-    "dateModified": "Thu Jan 18 2018 08:57:31 GMT+0800",
+    "mainEntityOfPage": "http://yoursite.com/2018/01/18/TCP-Basics-0/index.html",
+    "headline": "TCP-Basics",
+    "datePublished": "Thu Jan 18 2018 10:47:28 GMT+0800",
+    "dateModified": "Thu Jan 18 2018 10:57:51 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "wusp",
@@ -346,7 +346,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TCP-连接建立与结束"><span class="post-toc-number">1.</span> <span class="post-toc-text">TCP 连接建立与结束</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#建立连接（三次握手）"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">建立连接（三次握手）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#连接建立的过程"><span class="post-toc-number">1.1.0.1.</span> <span class="post-toc-text">连接建立的过程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#连接建立超时"><span class="post-toc-number">1.1.0.2.</span> <span class="post-toc-text">连接建立超时</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结束连接"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">结束连接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#发送FIN关闭TCP连接通常是应用层进行关闭的结果"><span class="post-toc-number">1.2.0.0.1.</span> <span class="post-toc-text">发送FIN关闭TCP连接通常是应用层进行关闭的结果!</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#TCP连接半关闭"><span class="post-toc-number">1.2.0.1.</span> <span class="post-toc-text">TCP连接半关闭</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#同时打开-amp-同时关闭"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">同时打开 &amp; 同时关闭</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#RST"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">RST</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#请求建立连接端口不存在"><span class="post-toc-number">1.4.0.1.</span> <span class="post-toc-text">请求建立连接端口不存在</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#异常终止连接"><span class="post-toc-number">1.4.0.2.</span> <span class="post-toc-text">异常终止连接</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TCP-Basics"><span class="post-toc-number">1.</span> <span class="post-toc-text">TCP Basics</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#面向连接"><span class="post-toc-number">1.1.0.1.</span> <span class="post-toc-text">面向连接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#可靠的"><span class="post-toc-number">1.1.0.2.</span> <span class="post-toc-text">可靠的</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字节流服务"><span class="post-toc-number">1.1.0.3.</span> <span class="post-toc-text">字节流服务</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TCP包首部"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">TCP包首部</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -378,7 +378,7 @@
         
     
             <p class="article-headline-p">
-                TCP 连接建立与结束
+                TCP-Basics
             </p>
         </div>
 
@@ -397,7 +397,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>wusp</strong>
-        <span>1月 17, 2018</span>
+        <span>1月 18, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -429,7 +429,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=TCP 连接建立与结束&url=http://yoursite.com/2018/01/17/TCP-建立与结束/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=TCP-Basics&url=http://yoursite.com/2018/01/18/TCP-Basics-0/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -438,7 +438,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=TCP 连接建立与结束&url=http://yoursite.com/2018/01/17/TCP-建立与结束/index.html&via=wusp" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=TCP-Basics&url=http://yoursite.com/2018/01/18/TCP-Basics-0/index.html&via=wusp" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -447,7 +447,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/01/17/TCP-建立与结束/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/01/18/TCP-Basics-0/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -456,7 +456,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/01/17/TCP-建立与结束/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/01/18/TCP-Basics-0/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -481,22 +481,26 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="TCP-连接建立与结束"><a href="#TCP-连接建立与结束" class="headerlink" title="TCP 连接建立与结束"></a>TCP 连接建立与结束</h1><h2 id="建立连接（三次握手）"><a href="#建立连接（三次握手）" class="headerlink" title="建立连接（三次握手）"></a>建立连接（三次握手）</h2><h4 id="连接建立的过程"><a href="#连接建立的过程" class="headerlink" title="连接建立的过程"></a>连接建立的过程</h4><ol>
-<li>请求端（通常也称为Client 客户）发送一个带有<strong>SYN</strong>标识符以<strong>ISN + 1</strong>为序列号的TCP报文段给另一端（通常也称为Server 服务器）请求建立一个<strong>TCP连接</strong>。</li>
-<li>Server如果能够建立TCP连接，则发回一个带有<strong>ACK</strong>标识符同时确认序号为<strong>Client序列号 + 1</strong>的确认报文段给Client。</li>
-<li>Client发送一个新的带有<strong>ACK</strong>标识符同时确认序号为<strong>Server序列号 + 1</strong>的报文段给Server进行确认（很多情况下，Client已经开始在这个报文段中的数据块中塞入将要发送给Server的数据）。<br>至此，三次握手完毕，TCP连接建立。</li>
-</ol>
-<h4 id="连接建立超时"><a href="#连接建立超时" class="headerlink" title="连接建立超时"></a>连接建立超时</h4><p>很明显，有很多种异常情况可能导致TCP连接无法建立。比如说Server没有处于正常状态；又或者装载TCP报文段的<strong>IP数据报</strong>在转发的过程中丢失了。<br>TCP协议对这种情况的处理方式是，为TCP连接建立设置一个<strong>超时时间</strong>，在超时时间到来之前会发送多个<strong>SYN</strong>包请求建立对端建立TCP连接。在超时时间到来之后，如果连接还没有建立，则放弃建立连接。</p>
-<h2 id="结束连接"><a href="#结束连接" class="headerlink" title="结束连接"></a>结束连接</h2><p><img src="media/15159381696632/TCP%E8%BF%9E%E6%8E%A5%E7%BB%88%E6%AD%A2.jpeg" alt="TCP连接终止"></p>
-<p>建立一个TCP连接需要三次握手，而完全终止TCP连接却需要4次。因为TCP连接是全双工的，一个FIN报文段一次只能关闭一个方向上的数据传送。因此，想要完全关闭一条TCP连接，需要两对<strong>FIN - FIN的ACK</strong> 报文段配对才行。这一种情况也被称为<strong>TCP连接的半关闭</strong>。</p>
-<h5 id="发送FIN关闭TCP连接通常是应用层进行关闭的结果"><a href="#发送FIN关闭TCP连接通常是应用层进行关闭的结果" class="headerlink" title="发送FIN关闭TCP连接通常是应用层进行关闭的结果!"></a>发送FIN关闭TCP连接通常是应用层进行关闭的结果!</h5><p>若在应用主动关闭连接的时候对设备进行抓包，可以很清楚的看到主动关闭方发送了一个带有<strong>FIN</strong>标识符的报文段给另一方。</p>
-<h4 id="TCP连接半关闭"><a href="#TCP连接半关闭" class="headerlink" title="TCP连接半关闭"></a>TCP连接半关闭</h4><p>图中虽然<strong>被动关闭方（第一个FIN的接受方）</strong>看起来在接收到FIN的ACK之后立即发送了自己的FIN给对端。但其实，在很多情况下这两个报文段之间是有时间间隔的，而在时间间隔中还发送了很多数据报文段，用以发送还未发送的数据。这一现象就是TCP的半关闭。<br>而TCP协议允许的这样一个<strong>“窗口期”</strong>特性，很多时候也被加以利用。（譬如Client已经发送完了自己将要发送的数据，但是仍然想要接收Server发送的数据）</p>
-<h2 id="同时打开-amp-同时关闭"><a href="#同时打开-amp-同时关闭" class="headerlink" title="同时打开 &amp; 同时关闭"></a>同时打开 &amp; 同时关闭</h2><p>由于TCP是全双工的，因此双方同时请求对端建立连接或者同时关闭连接是可能的。但是由于出现的概率很小，同时应用的场景很少，这里就不过多介绍了。</p>
-<h2 id="RST"><a href="#RST" class="headerlink" title="RST"></a>RST</h2><h4 id="请求建立连接端口不存在"><a href="#请求建立连接端口不存在" class="headerlink" title="请求建立连接端口不存在"></a>请求建立连接端口不存在</h4><p>经常会出现这种情况，请求建立连接的SYN报文段已经发送到了Server，但是Server检查到对应的目的端口并没有被监听（该端口绑定的应用程序没有启动）。这个时候Server在发送回给Client的ACK包中便会将<strong>RST标识符置1</strong>，用以通知Client连接无法建立。</p>
-<h4 id="异常终止连接"><a href="#异常终止连接" class="headerlink" title="异常终止连接"></a>异常终止连接</h4><p>通过发送<strong>RST</strong>而不是发送<strong>FIN</strong>报文段来结束TCP连接的方式也被称为<strong>异常释放</strong>。通常在某一个端在接收到对端发来不正常的报文时会发回一个<strong>RST</strong>给对端异常终止连接。这里讲的<strong>不正常</strong>可能不是报文段的内容有问题，而是无法处理该报文段。（在TCP保活定时器中应用中，在Client重启之后收到旧TCP连接对端服务器发来的探查报文段时，就会发回一个RST包让服务器终止连接。）<br>这样的异常终止连接有两个好处：</p>
+        <h1 id="TCP-Basics"><a href="#TCP-Basics" class="headerlink" title="TCP Basics"></a>TCP Basics</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
+<p>TCP提供一种<strong>面向连接的</strong>、<strong>可靠的</strong> <strong>字节流服务</strong>。</p>
+</blockquote>
+<h4 id="面向连接"><a href="#面向连接" class="headerlink" title="面向连接"></a>面向连接</h4><p>这一特性要求传输必须是端到端的，同时在连接的每一端，都需要有相应的资源和机制来维护TCP连接的状态。</p>
+<h4 id="可靠的"><a href="#可靠的" class="headerlink" title="可靠的"></a>可靠的</h4><p>TCP协议主要通过以下几种方式来确保TCP连接的可靠性：</p>
 <ul>
-<li>不需要执行四次握手，RST的<strong>接收端</strong>在收到该报文段之后将直接关闭。（RST的<strong>发送端</strong>之所以发送RST报文很可能是因为自己根本不能执行正常的四次握手来关闭TCP连接）</li>
-<li>RST的<strong>接收端</strong>知道对端出现了异常情况，从而进入到相应的<strong>异常处理流程</strong>。</li>
+<li><strong>数据分段</strong>。应用层传下来的数据会被TCP分成几段再往下传给IP，通常传给IP层的，已经<strong>添加过TCP包Header</strong>的信息单位也被称为<strong>报文段（segment）</strong>。</li>
+<li><strong>超时重传</strong>。在TCP连接的一端发送了一个报文段之后，会为这一个报文段启动一个定时器，如果在指定的时间内收不到另一端对这一报文段的<strong>ACK</strong>，TCP连接将会重发这一报文段。通常TCP在收到一个报文段之后并不会立即发送<strong>ACK</strong>，而是推迟几百毫秒之后再发送。</li>
+<li><strong>数据包检查和</strong>。TCP包的Header中添加了<strong>首部和数据</strong>的检验和，TCP连接的一端收到TCP数据包之后会对其进行检测，如果收到数据包的检验和有差错，将会<strong>直接丢弃这一个TCP数据包</strong>同时<strong>不ACK这一个数据包</strong>。</li>
+<li><strong>重排序</strong>。如有必要，TCP将对收到的数据包进行重排序。由于IP数据报的转发是由路径上的路由器决定的，因此经常会出前后两个TCP数据包走的不同IP路由路径并且到达对端的先后顺序前后倒置。这时候便需要TCP对收到的数据包进行重新排序，否则<strong>乱序的已经被分段过的</strong>TCP数据包就无法重新组合成最开始应用层传下来的数据块。</li>
+<li><strong>流量控制</strong>。TCP连接的每一端都有固定大小的缓冲空间。在协议上，TCP的接收端只允许另一端发送接收端缓冲区能够接收的数据量。缓冲区限制不仅能防止较快的发送端导致较慢的接收端<strong>缓冲区溢出</strong>；还能提高整体的<strong>运行效率</strong>（TCP一般都在内核当中，而应用层则基本都是用户态的程序，如果TCP每收到一个数据包就传给应用层程序会导致操作系统频繁地在内核态和用户态之间转换）。</li>
+</ul>
+<h4 id="字节流服务"><a href="#字节流服务" class="headerlink" title="字节流服务"></a>字节流服务</h4><p>应用程序通过TCP连接交换8bit字节构成的字节流，TCP不在字节流当中插入任何标识符（PPP协议经常会干的是）。TCP提供给应用程序的这种服务也被称之为<strong>字节流服务（byte stream service）</strong></p>
+<h2 id="TCP包首部"><a href="#TCP包首部" class="headerlink" title="TCP包首部"></a>TCP包首部</h2><img src="/2018/01/18/TCP-Basics-0/tcp-header.jpg" title="TCP包首部">
+<ul>
+<li><strong>端口号</strong>：每个TCP数据包首部中都会包含<strong>源端口号</strong>和<strong>目的端口号</strong>，以便用于寻找发送端和接收端的应用进行。<br>这两个端口号加上源端IP地址和目的IP地址<strong>唯一确定一个TCP连接</strong>。一个IP地址和一个端口号很多时候也被称为一个<strong>插口（socket）</strong>。</li>
+<li><strong>序列号</strong>：序列号是32bit的无符号数，到达上限后又从0开始。TCP用其对每个字节进行计数。<br>TCP连接发送数据的第一个字节序号为<strong>ISN（Initial Sequence Number）</strong>+ 1。</li>
+<li><strong>标识符</strong>：粉红色字段的标示位是是重要的标识符，当标识符被置为1时通常具备了特殊意义。<br><strong>URG:</strong>指明TCP包处于<strong>紧急（urgent）模式</strong>当中。<br><strong>ACK:</strong>确认序号有效，通知接收方其之前发送的某个或多个TCP包（由确认序号确定）已经被ACK。<br><strong>PSH:</strong>接收方应该尽快将这个报文段交给应用层。<br><strong>RST:</strong>重建连接，当TCP连接出现异常时，该标识符经常被使用。<br><strong>SYN:</strong>使用同步序号来请求建立一个新的TCP连接。<br><strong>FIN:</strong>发送端完成发送任务，请求断开TCP连接。</li>
+<li><strong>窗口</strong>：也被称为TCP拥塞窗口，用来通知接收端期望接收到的字节数，<strong>TCP流量控制（拥塞控制）</strong>的关键所在。</li>
+<li><strong>检验和</strong>：检验和覆盖了整个TCP报文段（首部+数据），接收端用其来验证字节流的完整性。这是一个强制性的字段，一定是由发端计算和存储，并有接收端进行验证。</li>
 </ul>
 
         
@@ -518,7 +522,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/01/17/TCP-定时器/" id="post_nav-newer" class="prev-content">
+        <a href="/2018/01/18/TCP-Timer/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -532,7 +536,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2018/01/17/TCP-数据流/" id="post_nav-older" class="next-content">
+        <a href="/2018/01/14/Kotlin Extension — Declaring Extensions as Members/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

@@ -43,7 +43,7 @@
     
     <title>
         
-            TCP Basics | 
+            TCP-DataFlow | 
         
         wusp Blog
     </title>
@@ -215,7 +215,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="wusp Blog">
-    <meta name="msapplication-starturl" content="http://yoursite.com/2018/01/17/TCP-Basics/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/01/18/TCP-DataFlow/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="wusp Blog">
@@ -230,16 +230,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/2018/01/17/TCP-Basics/">
+    <meta property="og:url" content="http://yoursite.com/2018/01/18/TCP-DataFlow/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="TCP Basics | wusp Blog">
+    <meta property="og:title" content="TCP-DataFlow | wusp Blog">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="">
     
 
     
-        <meta property="article:published_time" content="Wed Jan 17 2018 00:00:00 GMT+0800">
-        <meta property="article:modified_time" content="Thu Jan 18 2018 08:35:43 GMT+0800">
+        <meta property="article:published_time" content="Thu Jan 18 2018 11:16:52 GMT+0800">
+        <meta property="article:modified_time" content="Thu Jan 18 2018 11:22:27 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -247,7 +247,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2018/01/17/TCP-Basics/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/01/18/TCP-DataFlow/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -259,10 +259,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yoursite.com/2018/01/17/TCP-Basics/index.html",
-    "headline": "TCP Basics",
-    "datePublished": "Wed Jan 17 2018 00:00:00 GMT+0800",
-    "dateModified": "Thu Jan 18 2018 08:35:43 GMT+0800",
+    "mainEntityOfPage": "http://yoursite.com/2018/01/18/TCP-DataFlow/index.html",
+    "headline": "TCP-DataFlow",
+    "datePublished": "Thu Jan 18 2018 11:16:52 GMT+0800",
+    "dateModified": "Thu Jan 18 2018 11:22:27 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "wusp",
@@ -346,7 +346,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TCP-Basics"><span class="post-toc-number">1.</span> <span class="post-toc-text">TCP Basics</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#面向连接"><span class="post-toc-number">1.1.0.1.</span> <span class="post-toc-text">面向连接</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#可靠的"><span class="post-toc-number">1.1.0.2.</span> <span class="post-toc-text">可靠的</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字节流服务"><span class="post-toc-number">1.1.0.3.</span> <span class="post-toc-text">字节流服务</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TCP包首部"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">TCP包首部</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TCP-数据流"><span class="post-toc-number">1.</span> <span class="post-toc-text">TCP 数据流</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#经受时延的确认（Delayed-ACK）"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">经受时延的确认（Delayed ACK）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TCP窗口（TCP-Window）"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">TCP窗口（TCP Window）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#滑动窗口"><span class="post-toc-number">1.2.0.1.</span> <span class="post-toc-text">滑动窗口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#窗口大小"><span class="post-toc-number">1.2.0.2.</span> <span class="post-toc-text">窗口大小</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#PSH标志"><span class="post-toc-number">1.2.0.3.</span> <span class="post-toc-text">PSH标志</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#慢启动（Slow-Start）"><span class="post-toc-number">1.2.0.4.</span> <span class="post-toc-text">慢启动（Slow Start）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#拥塞避免算法"><span class="post-toc-number">1.2.0.5.</span> <span class="post-toc-text">拥塞避免算法</span></a></li></ol></li></ol></li></ol></li></ol>
     </ul>
     
 
@@ -378,7 +378,7 @@
         
     
             <p class="article-headline-p">
-                TCP Basics
+                TCP-DataFlow
             </p>
         </div>
 
@@ -397,7 +397,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>wusp</strong>
-        <span>1月 17, 2018</span>
+        <span>1月 18, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -429,7 +429,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=TCP Basics&url=http://yoursite.com/2018/01/17/TCP-Basics/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=TCP-DataFlow&url=http://yoursite.com/2018/01/18/TCP-DataFlow/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -438,7 +438,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=TCP Basics&url=http://yoursite.com/2018/01/17/TCP-Basics/index.html&via=wusp" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=TCP-DataFlow&url=http://yoursite.com/2018/01/18/TCP-DataFlow/index.html&via=wusp" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -447,7 +447,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/01/17/TCP-Basics/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/01/18/TCP-DataFlow/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -456,7 +456,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/01/17/TCP-Basics/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/01/18/TCP-DataFlow/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -481,27 +481,49 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="TCP-Basics"><a href="#TCP-Basics" class="headerlink" title="TCP Basics"></a>TCP Basics</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
-<p>TCP提供一种<strong>面向连接的</strong>、<strong>可靠的</strong> <strong>字节流服务</strong>。</p>
+        <h1 id="TCP-数据流"><a href="#TCP-数据流" class="headerlink" title="TCP 数据流"></a>TCP 数据流</h1><h2 id="经受时延的确认（Delayed-ACK）"><a href="#经受时延的确认（Delayed-ACK）" class="headerlink" title="经受时延的确认（Delayed ACK）"></a>经受时延的确认（Delayed ACK）</h2><p>Delayed ACK翻译成中文，很多时候被称为<strong>经受时延的确认</strong>。这讲的是TCP连接运行中的一种<strong>性能优化</strong>机制：</p>
+<blockquote>
+<p>通过TCP在接收到数据时并不立即发送ACK；相反，它推迟发送，以便将ACK与需要沿该方向发送的数据一起发送。 <strong>绝大多数实现采用的时延为200ms</strong></p>
 </blockquote>
-<h4 id="面向连接"><a href="#面向连接" class="headerlink" title="面向连接"></a>面向连接</h4><p>这一特性要求传输必须是端到端的，同时在连接的每一端，都需要有相应的资源和机制来维护TCP连接的状态。</p>
-<h4 id="可靠的"><a href="#可靠的" class="headerlink" title="可靠的"></a>可靠的</h4><p>TCP协议主要通过以下几种方式来确保TCP连接的可靠性：</p>
+<p>这样的情况在TCP执行下载任务时非常常见。对于接收方来说，它只想要接收下载服务器发送来的数据，除了维持TCP数据发送的ACK报文，自己并不需要向服务器发送任何数据；因此接收端经常都是在接收到几个连续的数据包之后<strong>直接ACK最后一个数据包</strong>的序列号（相当于将这几个数据包合并ACK了）<br><strong>对于具体功能的实现与操作系统有关，不同的机器上可能很可能会观测到不同的时延。</strong><br>说是性能优化，很大程度上体现在以下几个方面：</p>
 <ul>
-<li><strong>数据分段</strong>。应用层传下来的数据会被TCP分成几段再往下传给IP，通常传给IP层的，已经<strong>添加过TCP包Header</strong>的信息单位也被称为<strong>报文段（segment）</strong>。</li>
-<li><strong>超时重传</strong>。在TCP连接的一端发送了一个报文段之后，会为这一个报文段启动一个定时器，如果在指定的时间内收不到另一端对这一报文段的<strong>ACK</strong>，TCP连接将会重发这一报文段。通常TCP在收到一个报文段之后并不会立即发送<strong>ACK</strong>，而是推迟几百毫秒之后再发送。</li>
-<li><strong>数据包检查和</strong>。TCP包的Header中添加了<strong>首部和数据</strong>的检验和，TCP连接的一端收到TCP数据包之后会对其进行检测，如果收到数据包的检验和有差错，将会<strong>直接丢弃这一个TCP数据包</strong>同时<strong>不ACK这一个数据包</strong>。</li>
-<li><strong>重排序</strong>。如有必要，TCP将对收到的数据包进行重排序。由于IP数据报的转发是由路径上的路由器决定的，因此经常会出前后两个TCP数据包走的不同IP路由路径并且到达对端的先后顺序前后倒置。这时候便需要TCP对收到的数据包进行重新排序，否则<strong>乱序的已经被分段过的</strong>TCP数据包就无法重新组合成最开始应用层传下来的数据块。</li>
-<li><strong>流量控制</strong>。TCP连接的每一端都有固定大小的缓冲空间。在协议上，TCP的接收端只允许另一端发送接收端缓冲区能够接收的数据量。缓冲区限制不仅能防止较快的发送端导致较慢的接收端<strong>缓冲区溢出</strong>；还能提高整体的<strong>运行效率</strong>（TCP一般都在内核当中，而应用层则基本都是用户态的程序，如果TCP每收到一个数据包就传给应用层程序会导致操作系统频繁地在内核态和用户态之间转换）。</li>
+<li><strong>减小接收端和发送端之间的网络流量消耗</strong>。一个TCP报文段通过TCP/IP协议族，封装成以太网帧之后，至少都对应64个字节（以太网数据：46 + 以太网帧首部+尾部：16）。这也意味着如果接收端需要ACK每一个发送端发来的TCP报文段，每一个ACK报文至少都会占用64个字节。<br>在一方只需要尽可能的发送数据流而另一方只需要尽可能的接收数据流的情况下，对网络带宽无疑不是一种极大的浪费。（对同一块数据，TCP分段越多，单纯ACK对TCP连接性能的损害越大）这时候，<strong>Delayed ACK</strong>无论是从<strong>传输效率</strong>还是<strong>流量节省</strong>方面，都是一种非常有效的性能提升手段。</li>
+<li><strong>提高TCP协议栈程序的运行效率</strong>。类似TCP这样的全双工通信，<strong>发送</strong>和<strong>接收</strong>经常会放在<strong>不同的线程</strong>中来执行。由于<strong>Delayed ACK</strong>的存在，Client减少了需要执行发送的次数，也就减少了程序在线程切换和数据同步方面的开销；类似的还有封装TCP报文段封装成以太网帧的消耗。</li>
 </ul>
-<h4 id="字节流服务"><a href="#字节流服务" class="headerlink" title="字节流服务"></a>字节流服务</h4><p>应用程序通过TCP连接交换8bit字节构成的字节流，TCP不在字节流当中插入任何标识符（PPP协议经常会干的是）。TCP提供给应用程序的这种服务也被称之为<strong>字节流服务（byte stream service）</strong></p>
-<h2 id="TCP包首部"><a href="#TCP包首部" class="headerlink" title="TCP包首部"></a>TCP包首部</h2><p><img src="media/15159327083831/TCP%E5%8C%85%E9%A6%96%E9%83%A8.jpg" alt="TCP包首部"></p>
+<p>在报文段数很多的时候，这些看起来微小的优化都能够演变成为显著的性能提升效果。</p>
+<h2 id="TCP窗口（TCP-Window）"><a href="#TCP窗口（TCP-Window）" class="headerlink" title="TCP窗口（TCP Window）"></a>TCP窗口（TCP Window）</h2><p>TCP拥塞控制是一个重要的且规模不小的机制。不仅涵盖了TCP报文首部的窗口字段，还有拥塞算法、缓冲区、连接状态维护……。而TCP窗口则是TCP拥塞控制的基石。</p>
+<h4 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h4><p>再来一个被用烂的图，<strong>发送方的窗口</strong><br><img src="/2018/01/18/TCP-DataFlow/TCP-Moving-Win.jpg" title="TCP滑动窗口"></p>
+<p><strong>关键词解释</strong></p>
 <ul>
-<li><strong>端口号</strong>：每个TCP数据包首部中都会包含<strong>源端口号</strong>和<strong>目的端口号</strong>，以便用于寻找发送端和接收端的应用进行。<br>这两个端口号加上源端IP地址和目的IP地址<strong>唯一确定一个TCP连接</strong>。一个IP地址和一个端口号很多时候也被称为一个<strong>插口（socket）</strong>。</li>
-<li><strong>序列号</strong>：序列号是32bit的无符号数，到达上限后又从0开始。TCP用其对每个字节进行计数。<br>TCP连接发送数据的第一个字节序号为<strong>ISN（Initial Sequence Number）</strong>+ 1。</li>
-<li><strong>标识符</strong>：粉红色字段的标示位是是重要的标识符，当标识符被置为1时通常具备了特殊意义。<br><strong>URG:</strong>指明TCP包处于<strong>紧急（urgent）模式</strong>当中。<br><strong>ACK:</strong>确认序号有效，通知接收方其之前发送的某个或多个TCP包（由确认序号确定）已经被ACK。<br><strong>PSH:</strong>接收方应该尽快将这个报文段交给应用层。<br><strong>RST:</strong>重建连接，当TCP连接出现异常时，该标识符经常被使用。<br><strong>SYN:</strong>使用同步序号来请求建立一个新的TCP连接。<br><strong>FIN:</strong>发送端完成发送任务，请求断开TCP连接。</li>
-<li><strong>窗口</strong>：也被称为TCP拥塞窗口，用来通知接收端期望接收到的字节数，<strong>TCP流量控制（拥塞控制）</strong>的关键所在。</li>
-<li><strong>检验和</strong>：检验和覆盖了整个TCP报文段（首部+数据），接收端用其来验证字节流的完整性。这是一个强制性的字段，一定是由发端计算和存储，并有接收端进行验证。</li>
+<li><strong>由接收方通告的窗口</strong>：对应接收方回给发送方的ACK报文中的窗口字段。</li>
+<li><strong>窗口合拢</strong>：指窗口左边向窗口右边靠拢（图中3 - 4的窗口左沿向右边移动时），发生在<strong>接收到发送的数据对应的ACK包时</strong>。</li>
+<li><strong>窗口张开</strong>：指窗口的右边移动（图中9 - 10的窗口右沿向右边移动时），发生在接收端的TCP进程已经将收到的数据交付给应用程序（例如socket）并释放了缓冲区用以重新接收数据时。</li>
+<li><strong>可用窗口和已发送未确认数据包</strong>：由于TCP是全双工通信，必然会出现当接收方发送ACK包通知接收方的窗口<strong>【时间点1】</strong>之后，发送方在<strong>【时间点3】</strong>接收到接收方在<strong>【时间点1】</strong>发送的ACK包更新发送方的窗口时发送方在<strong>【时间点2】</strong>发送的一些报文段还在 <strong>“途中”</strong> ，没有被接收方收到。<br> 这部分没有被接收到的报文段就被称为<strong>已发送未确认的数据包</strong>，而发送方拿到的 <strong>最新的接收方通告的窗口大小减去已发送未确认的数据包总量的差值</strong>，被称为发送方的<strong>可用窗口</strong>。</li>
 </ul>
+<p>由于对于一块将要发送的数据块，整个TCP传输过程看起来就像是一个窗口在数据块上按顺序移动，因此TCP这种窗口运作机制也被称为<strong>滑动窗口</strong>。</p>
+<h4 id="窗口大小"><a href="#窗口大小" class="headerlink" title="窗口大小"></a>窗口大小</h4><p>很明显，从<strong>滑动窗口</strong>的例子中可以看到，接收方通告的窗口大小决定了发送方每次能够发送的TCP报文段数据量的多少，很大程度上影响着TCP连接的性能。虽然接收方的窗口大小对应的是接收方缓冲区的大小，但缓冲区并不是越大越好。一是要考虑缓冲区对于操作系统内存资源的消耗，二也要考虑缓冲区向应用程序交付字节流的吞吐量能够为应用程序所接收。<br><br>对于典型的Linux设备，可以在 <strong><em>/proc/sys/net/ipv4/</em></strong> 路径下查看到当前操作系统对应的TCP读/写缓冲区大小以及其他TCP信息。</p>
+<h4 id="PSH标志"><a href="#PSH标志" class="headerlink" title="PSH标志"></a>PSH标志</h4><p>发送方可以使用该标志通知接收方将所<strong>接收到的保存在缓冲区中的数据</strong>尽快交付给应用程序；这里尽快交付的数据不仅包括在缓冲区中的数据，还包括随着<strong>PSH标志位一起发送的数据</strong>。发送端发现接收端的TCP窗口“总是”很小时，可能在发送的数据包中加上PSH标识符以“督促”接收方尽快将TCP缓冲区内的数据交付给应用层，从而清空缓冲区，打开更大的TCP拥塞窗口。</p>
+<h4 id="慢启动（Slow-Start）"><a href="#慢启动（Slow-Start）" class="headerlink" title="慢启动（Slow Start）"></a>慢启动（Slow Start）</h4><p>起初<strong>慢启动</strong>只是一种算法，而现在，几乎所有的操作系统TCP协议都嵌入了这一算法以便获得更好的TCP连接性能。其运作原理如下：<br>为发送方的TCP增加另一个窗口：<strong>拥塞窗口（Congestion Window）, 记为cwnd</strong>。</p>
+<ul>
+<li>当与另一个网络的主机建立TCP连接时，拥塞窗口将被初始化为1个<strong>报文段</strong>（即另一端通告的窗口大小）。</li>
+<li>每当发送方接收到一个ACK时，拥塞窗口就增加一个<strong>报文段</strong>（cwnd以字节为单位，但是慢启动以报文段大小为单位进行增加）。</li>
+<li>发送方取<strong>cwnd</strong>和<strong>通告窗口</strong>的<strong>最小值</strong>作为发送上限来往接收方发送报文。</li>
+<li>由于发送方每接收接收方发送的ACK拥塞窗口就+1，可以看到拥塞窗口的增加是一种<strong>指数增加</strong>的关系。1 -&gt; 2 -&gt; 4。</li>
+<li><strong>通告窗口</strong>被认为是接收方采用的流量控制机制；而<strong>拥塞窗口</strong>是发送方采用的流量控制机制。</li>
+</ul>
+<h4 id="拥塞避免算法"><a href="#拥塞避免算法" class="headerlink" title="拥塞避免算法"></a>拥塞避免算法</h4><p>说到TCP的拥塞窗口，绝对离不开TCP的拥塞避免算法。拥塞避免算法是一种帮助发送方<strong>处理丢失分组</strong>的方法，用以处理提高网络传输成功率。拥塞避免算法和慢启动算法是两个<strong>目的不同、相互独立的</strong>算法；但在实际中，他们两个经常一起实现。<br>拥塞避免一般会发生在两种情况下：</p>
+<ul>
+<li>发送的报文分组超时未被ACK。</li>
+<li>发送的报文分组接收到重复的ACK。</li>
+</ul>
+<p>拥塞避免与慢启动的工作流程如下：</p>
+<ol>
+<li>对每个连接维持两个变量，一个是<strong>拥塞窗口cwnd</strong>，另一个是<strong>慢启动门限ssthresh</strong>。</li>
+<li>在创建TCP连接时，初始化cwnd的值为1个<strong>报文段</strong>（不是1个字节），ssthresh为65535个字节（可通告的最大窗口大小）。</li>
+<li>发送方发送的报文不超过<strong>cwnd</strong>和接收方<strong>通告的窗口</strong>大小。</li>
+<li>当拥塞发生时（发送的报文段超时或者被重复ACK），ssthresh将被设置为<strong>当前窗口大小的一半</strong>（cwnd和接收方通告窗口大小的最小值，但最少为2个报文段）。此外，如果是<strong>超时</strong>引起的拥塞，则将cwnd设置为1个报文段。</li>
+<li>当新的ACK报文到来时就增加cwnd，但增加的方法依赖于正在进行慢启动还是拥塞避免。如果<strong>cwnd小于ssthresh</strong>，则说明正在进行慢启动（cwnd指数增加）；否则则是进行拥塞避免，拥塞避免算法要求每次收到一个确认时仅将cwnd增加 1/cwnd，cwnd的增长处于一种<strong>加性增长</strong>。</li>
+</ol>
 
         
     
@@ -528,7 +550,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2018/01/17/TCP-定时器/" id="post_nav-older" class="next-content">
+        <a href="/2018/01/18/TCP-Connection/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
