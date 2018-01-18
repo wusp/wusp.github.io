@@ -43,7 +43,7 @@
     
     <title>
         
-            归档: 2018 | 
+            TCP 连接建立与结束 | 
         
         wusp Blog
     </title>
@@ -215,7 +215,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="wusp Blog">
-    <meta name="msapplication-starturl" content="http://yoursite.com/archives/2018/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/01/17/TCP-建立与结束/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="wusp Blog">
@@ -230,13 +230,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/archives/2018/">
+    <meta property="og:url" content="http://yoursite.com/2018/01/17/TCP-建立与结束/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档: 2018 | wusp Blog">
+    <meta property="og:title" content="TCP 连接建立与结束 | wusp Blog">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="">
     
 
+    
+        <meta property="article:published_time" content="Wed Jan 17 2018 00:00:00 GMT+0800">
+        <meta property="article:modified_time" content="Thu Jan 18 2018 08:57:31 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -244,13 +247,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/archives/2018/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/01/17/TCP-建立与结束/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2018/01/17/TCP-建立与结束/index.html",
+    "headline": "TCP 连接建立与结束",
+    "datePublished": "Wed Jan 17 2018 00:00:00 GMT+0800",
+    "dateModified": "Thu Jan 18 2018 08:57:31 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "wusp",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/wusp.jpg"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "wusp Blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": "",
+    "description": "",
+}
+</script>
 
 
     
@@ -284,525 +317,234 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TCP-连接建立与结束"><span class="post-toc-number">1.</span> <span class="post-toc-text">TCP 连接建立与结束</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#建立连接（三次握手）"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">建立连接（三次握手）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#连接建立的过程"><span class="post-toc-number">1.1.0.1.</span> <span class="post-toc-text">连接建立的过程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#连接建立超时"><span class="post-toc-number">1.1.0.2.</span> <span class="post-toc-text">连接建立超时</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结束连接"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">结束连接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#发送FIN关闭TCP连接通常是应用层进行关闭的结果"><span class="post-toc-number">1.2.0.0.1.</span> <span class="post-toc-text">发送FIN关闭TCP连接通常是应用层进行关闭的结果!</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#TCP连接半关闭"><span class="post-toc-number">1.2.0.1.</span> <span class="post-toc-text">TCP连接半关闭</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#同时打开-amp-同时关闭"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">同时打开 &amp; 同时关闭</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#RST"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">RST</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#请求建立连接端口不存在"><span class="post-toc-number">1.4.0.1.</span> <span class="post-toc-text">请求建立连接端口不存在</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#异常终止连接"><span class="post-toc-number">1.4.0.2.</span> <span class="post-toc-text">异常终止连接</span></a></li></ol></li></ol></li></ol></li></ol>
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/17/TCP-Basics/">TCP Basics</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/17/TCP-Basics/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 17, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Network/">Network</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/17/TCP-定时器/">TCP 定时器</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            TC...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/17/TCP-定时器/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 17, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Network/">Network</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/17/TCP-建立与结束/">TCP 连接建立与结束</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/17/TCP-建立与结束/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 17, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Network/">Network</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/17/TCP-数据流/">TCP 数据流</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            TC...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/17/TCP-数据流/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 17, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Network/">Network</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/14/Kotlin Extension — Declaring Extensions as Members/">Kotlin Extension — Declaring Extensions as Members</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/14/Kotlin Extension — Declaring Extensions as Members/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 14, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Kotlin/">Kotlin</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/14/Kotlin Extension — Method/">Kotlin Extension — Method</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/14/Kotlin Extension — Method/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 14, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Kotlin/">Kotlin</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/14/Kotlin Extension — Properties&amp;Companion/">Kotlin Extension — Properties&amp;Companion</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/14/Kotlin Extension — Properties&amp;Companion/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 14, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Kotlin/">Kotlin</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/14/Kotlin-Inline1/">Kotlin Inline Function 1</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/14/Kotlin-Inline1/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 14, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Kotlin/">Kotlin</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                TCP 连接建立与结束
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/wusp.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>wusp</strong>
+        <span>1月 17, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=TCP 连接建立与结束&url=http://yoursite.com/2018/01/17/TCP-建立与结束/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=TCP 连接建立与结束&url=http://yoursite.com/2018/01/17/TCP-建立与结束/index.html&via=wusp" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/01/17/TCP-建立与结束/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/01/17/TCP-建立与结束/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
     
 </div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="TCP-连接建立与结束"><a href="#TCP-连接建立与结束" class="headerlink" title="TCP 连接建立与结束"></a>TCP 连接建立与结束</h1><h2 id="建立连接（三次握手）"><a href="#建立连接（三次握手）" class="headerlink" title="建立连接（三次握手）"></a>建立连接（三次握手）</h2><h4 id="连接建立的过程"><a href="#连接建立的过程" class="headerlink" title="连接建立的过程"></a>连接建立的过程</h4><ol>
+<li>请求端（通常也称为Client 客户）发送一个带有<strong>SYN</strong>标识符以<strong>ISN + 1</strong>为序列号的TCP报文段给另一端（通常也称为Server 服务器）请求建立一个<strong>TCP连接</strong>。</li>
+<li>Server如果能够建立TCP连接，则发回一个带有<strong>ACK</strong>标识符同时确认序号为<strong>Client序列号 + 1</strong>的确认报文段给Client。</li>
+<li>Client发送一个新的带有<strong>ACK</strong>标识符同时确认序号为<strong>Server序列号 + 1</strong>的报文段给Server进行确认（很多情况下，Client已经开始在这个报文段中的数据块中塞入将要发送给Server的数据）。<br>至此，三次握手完毕，TCP连接建立。</li>
+</ol>
+<h4 id="连接建立超时"><a href="#连接建立超时" class="headerlink" title="连接建立超时"></a>连接建立超时</h4><p>很明显，有很多种异常情况可能导致TCP连接无法建立。比如说Server没有处于正常状态；又或者装载TCP报文段的<strong>IP数据报</strong>在转发的过程中丢失了。<br>TCP协议对这种情况的处理方式是，为TCP连接建立设置一个<strong>超时时间</strong>，在超时时间到来之前会发送多个<strong>SYN</strong>包请求建立对端建立TCP连接。在超时时间到来之后，如果连接还没有建立，则放弃建立连接。</p>
+<h2 id="结束连接"><a href="#结束连接" class="headerlink" title="结束连接"></a>结束连接</h2><p><img src="media/15159381696632/TCP%E8%BF%9E%E6%8E%A5%E7%BB%88%E6%AD%A2.jpeg" alt="TCP连接终止"></p>
+<p>建立一个TCP连接需要三次握手，而完全终止TCP连接却需要4次。因为TCP连接是全双工的，一个FIN报文段一次只能关闭一个方向上的数据传送。因此，想要完全关闭一条TCP连接，需要两对<strong>FIN - FIN的ACK</strong> 报文段配对才行。这一种情况也被称为<strong>TCP连接的半关闭</strong>。</p>
+<h5 id="发送FIN关闭TCP连接通常是应用层进行关闭的结果"><a href="#发送FIN关闭TCP连接通常是应用层进行关闭的结果" class="headerlink" title="发送FIN关闭TCP连接通常是应用层进行关闭的结果!"></a>发送FIN关闭TCP连接通常是应用层进行关闭的结果!</h5><p>若在应用主动关闭连接的时候对设备进行抓包，可以很清楚的看到主动关闭方发送了一个带有<strong>FIN</strong>标识符的报文段给另一方。</p>
+<h4 id="TCP连接半关闭"><a href="#TCP连接半关闭" class="headerlink" title="TCP连接半关闭"></a>TCP连接半关闭</h4><p>图中虽然<strong>被动关闭方（第一个FIN的接受方）</strong>看起来在接收到FIN的ACK之后立即发送了自己的FIN给对端。但其实，在很多情况下这两个报文段之间是有时间间隔的，而在时间间隔中还发送了很多数据报文段，用以发送还未发送的数据。这一现象就是TCP的半关闭。<br>而TCP协议允许的这样一个<strong>“窗口期”</strong>特性，很多时候也被加以利用。（譬如Client已经发送完了自己将要发送的数据，但是仍然想要接收Server发送的数据）</p>
+<h2 id="同时打开-amp-同时关闭"><a href="#同时打开-amp-同时关闭" class="headerlink" title="同时打开 &amp; 同时关闭"></a>同时打开 &amp; 同时关闭</h2><p>由于TCP是全双工的，因此双方同时请求对端建立连接或者同时关闭连接是可能的。但是由于出现的概率很小，同时应用的场景很少，这里就不过多介绍了。</p>
+<h2 id="RST"><a href="#RST" class="headerlink" title="RST"></a>RST</h2><h4 id="请求建立连接端口不存在"><a href="#请求建立连接端口不存在" class="headerlink" title="请求建立连接端口不存在"></a>请求建立连接端口不存在</h4><p>经常会出现这种情况，请求建立连接的SYN报文段已经发送到了Server，但是Server检查到对应的目的端口并没有被监听（该端口绑定的应用程序没有启动）。这个时候Server在发送回给Client的ACK包中便会将<strong>RST标识符置1</strong>，用以通知Client连接无法建立。</p>
+<h4 id="异常终止连接"><a href="#异常终止连接" class="headerlink" title="异常终止连接"></a>异常终止连接</h4><p>通过发送<strong>RST</strong>而不是发送<strong>FIN</strong>报文段来结束TCP连接的方式也被称为<strong>异常释放</strong>。通常在某一个端在接收到对端发来不正常的报文时会发回一个<strong>RST</strong>给对端异常终止连接。这里讲的<strong>不正常</strong>可能不是报文段的内容有问题，而是无法处理该报文段。（在TCP保活定时器中应用中，在Client重启之后收到旧TCP连接对端服务器发来的探查报文段时，就会发回一个RST包让服务器终止连接。）<br>这样的异常终止连接有两个好处：</p>
+<ul>
+<li>不需要执行四次握手，RST的<strong>接收端</strong>在收到该报文段之后将直接关闭。（RST的<strong>发送端</strong>之所以发送RST报文很可能是因为自己根本不能执行正常的四次握手来关闭TCP连接）</li>
+<li>RST的<strong>接收端</strong>知道对端出现了异常情况，从而进入到相应的<strong>异常处理流程</strong>。</li>
+</ul>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/01/17/TCP-定时器/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/01/17/TCP-数据流/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
