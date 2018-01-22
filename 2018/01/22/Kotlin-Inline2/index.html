@@ -43,7 +43,7 @@
     
     <title>
         
-            TCP-Connection | 
+            Kotlin Inline Function 2 | 
         
         wusp Blog
     </title>
@@ -215,7 +215,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="wusp Blog">
-    <meta name="msapplication-starturl" content="http://yoursite.com/2018/01/18/TCP-Connection/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/01/22/Kotlin-Inline2/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="wusp Blog">
@@ -230,16 +230,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/2018/01/18/TCP-Connection/">
+    <meta property="og:url" content="http://yoursite.com/2018/01/22/Kotlin-Inline2/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="TCP-Connection | wusp Blog">
+    <meta property="og:title" content="Kotlin Inline Function 2 | wusp Blog">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="">
     
 
     
-        <meta property="article:published_time" content="Thu Jan 18 2018 11:02:26 GMT+0800">
-        <meta property="article:modified_time" content="Thu Jan 18 2018 11:05:17 GMT+0800">
+        <meta property="article:published_time" content="Mon Jan 22 2018 18:10:27 GMT+0800">
+        <meta property="article:modified_time" content="Mon Jan 22 2018 18:15:04 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -247,7 +247,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2018/01/18/TCP-Connection/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/01/22/Kotlin-Inline2/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -259,10 +259,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yoursite.com/2018/01/18/TCP-Connection/index.html",
-    "headline": "TCP-Connection",
-    "datePublished": "Thu Jan 18 2018 11:02:26 GMT+0800",
-    "dateModified": "Thu Jan 18 2018 11:05:17 GMT+0800",
+    "mainEntityOfPage": "http://yoursite.com/2018/01/22/Kotlin-Inline2/index.html",
+    "headline": "Kotlin Inline Function 2",
+    "datePublished": "Mon Jan 22 2018 18:10:27 GMT+0800",
+    "dateModified": "Mon Jan 22 2018 18:15:04 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "wusp",
@@ -346,7 +346,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TCP-连接建立与结束"><span class="post-toc-number">1.</span> <span class="post-toc-text">TCP 连接建立与结束</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#建立连接（三次握手）"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">建立连接（三次握手）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#连接建立的过程"><span class="post-toc-number">1.1.0.1.</span> <span class="post-toc-text">连接建立的过程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#连接建立超时"><span class="post-toc-number">1.1.0.2.</span> <span class="post-toc-text">连接建立超时</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#结束连接"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">结束连接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#发送FIN关闭TCP连接通常是应用层进行关闭的结果"><span class="post-toc-number">1.2.0.0.1.</span> <span class="post-toc-text">发送FIN关闭TCP连接通常是应用层进行关闭的结果!</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#TCP连接半关闭"><span class="post-toc-number">1.2.0.1.</span> <span class="post-toc-text">TCP连接半关闭</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#同时打开-amp-同时关闭"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">同时打开 &amp; 同时关闭</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#RST"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">RST</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#请求建立连接端口不存在"><span class="post-toc-number">1.4.0.1.</span> <span class="post-toc-text">请求建立连接端口不存在</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#异常终止连接"><span class="post-toc-number">1.4.0.2.</span> <span class="post-toc-text">异常终止连接</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Kotlin-Inline-Functions-2"><span class="post-toc-number">1.</span> <span class="post-toc-text">Kotlin - Inline Functions 2</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Reified-Type"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Reified Type</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#runtime-available语义"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">runtime-available语义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#runtime-available的限制性"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">runtime-available的限制性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#Note-坦白地说官方这部分文档所表达出来的意思跟实际情况-Kotlin-1-2-20-是有些出入的，也不知道是文档没有及时更新，还是Kotlin这部分特性后面还需要继续迭代更新。但不影响我们学习-inline-function-reified。"><span class="post-toc-number">1.1.2.0.0.1.</span> <span class="post-toc-text">Note: 坦白地说官方这部分文档所表达出来的意思跟实际情况(Kotlin - 1.2.20)是有些出入的，也不知道是文档没有及时更新，还是Kotlin这部分特性后面还需要继续迭代更新。但不影响我们学习 inline function reified。</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#reified作用"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">reified作用</span></a></li></ol></li></ol></li></ol>
     </ul>
     
 
@@ -378,7 +378,7 @@
         
     
             <p class="article-headline-p">
-                TCP-Connection
+                Kotlin Inline Function 2
             </p>
         </div>
 
@@ -397,7 +397,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>wusp</strong>
-        <span>1月 18, 2018</span>
+        <span>1月 22, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -429,7 +429,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=TCP-Connection&url=http://yoursite.com/2018/01/18/TCP-Connection/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Kotlin Inline Function 2&url=http://yoursite.com/2018/01/22/Kotlin-Inline2/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -438,7 +438,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=TCP-Connection&url=http://yoursite.com/2018/01/18/TCP-Connection/index.html&via=wusp" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Kotlin Inline Function 2&url=http://yoursite.com/2018/01/22/Kotlin-Inline2/index.html&via=wusp" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -447,7 +447,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/01/18/TCP-Connection/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/01/22/Kotlin-Inline2/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -456,7 +456,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/01/18/TCP-Connection/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/01/22/Kotlin-Inline2/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -481,23 +481,28 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="TCP-连接建立与结束"><a href="#TCP-连接建立与结束" class="headerlink" title="TCP 连接建立与结束"></a>TCP 连接建立与结束</h1><h2 id="建立连接（三次握手）"><a href="#建立连接（三次握手）" class="headerlink" title="建立连接（三次握手）"></a>建立连接（三次握手）</h2><h4 id="连接建立的过程"><a href="#连接建立的过程" class="headerlink" title="连接建立的过程"></a>连接建立的过程</h4><ol>
-<li>请求端（通常也称为Client 客户）发送一个带有<strong>SYN</strong>标识符以<strong>ISN + 1</strong>为序列号的TCP报文段给另一端（通常也称为Server 服务器）请求建立一个<strong>TCP连接</strong>。</li>
-<li>Server如果能够建立TCP连接，则发回一个带有<strong>ACK</strong>标识符同时确认序号为<strong>Client序列号 + 1</strong>的确认报文段给Client。</li>
-<li>Client发送一个新的带有<strong>ACK</strong>标识符同时确认序号为<strong>Server序列号 + 1</strong>的报文段给Server进行确认（很多情况下，Client已经开始在这个报文段中的数据块中塞入将要发送给Server的数据）。<br>至此，三次握手完毕，TCP连接建立。</li>
-</ol>
-<h4 id="连接建立超时"><a href="#连接建立超时" class="headerlink" title="连接建立超时"></a>连接建立超时</h4><p>很明显，有很多种异常情况可能导致TCP连接无法建立。比如说Server没有处于正常状态；又或者装载TCP报文段的<strong>IP数据报</strong>在转发的过程中丢失了。<br>TCP协议对这种情况的处理方式是，为TCP连接建立设置一个<strong>超时时间</strong>，在超时时间到来之前会发送多个<strong>SYN</strong>包请求建立对端建立TCP连接。在超时时间到来之后，如果连接还没有建立，则放弃建立连接。</p>
-<h2 id="结束连接"><a href="#结束连接" class="headerlink" title="结束连接"></a>结束连接</h2><img src="/2018/01/18/TCP-Connection/TCP-SYN-FIN.jpeg" title="TCP建立与终止">
-<p>建立一个TCP连接需要三次握手，而完全终止TCP连接却需要4次。因为TCP连接是全双工的，一个FIN报文段一次只能关闭一个方向上的数据传送。因此，想要完全关闭一条TCP连接，需要两对<strong>FIN - FIN的ACK</strong> 报文段配对才行。这一种情况也被称为<strong>TCP连接的半关闭</strong>。</p>
-<h5 id="发送FIN关闭TCP连接通常是应用层进行关闭的结果"><a href="#发送FIN关闭TCP连接通常是应用层进行关闭的结果" class="headerlink" title="发送FIN关闭TCP连接通常是应用层进行关闭的结果!"></a>发送FIN关闭TCP连接通常是应用层进行关闭的结果!</h5><p>若在应用主动关闭连接的时候对设备进行抓包，可以很清楚的看到主动关闭方发送了一个带有<strong>FIN</strong>标识符的报文段给另一方。</p>
-<h4 id="TCP连接半关闭"><a href="#TCP连接半关闭" class="headerlink" title="TCP连接半关闭"></a>TCP连接半关闭</h4><p>图中虽然<strong>被动关闭方（第一个FIN的接受方）</strong>看起来在接收到FIN的ACK之后立即发送了自己的FIN给对端。但其实，在很多情况下这两个报文段之间是有时间间隔的，而在时间间隔中还发送了很多数据报文段，用以发送还未发送的数据。这一现象就是TCP的半关闭。<br>而TCP协议允许的这样一个<strong>“窗口期”</strong>特性，很多时候也被加以利用。（譬如Client已经发送完了自己将要发送的数据，但是仍然想要接收Server发送的数据）</p>
-<h2 id="同时打开-amp-同时关闭"><a href="#同时打开-amp-同时关闭" class="headerlink" title="同时打开 &amp; 同时关闭"></a>同时打开 &amp; 同时关闭</h2><p>由于TCP是全双工的，因此双方同时请求对端建立连接或者同时关闭连接是可能的。但是由于出现的概率很小，同时应用的场景很少，这里就不过多介绍了。</p>
-<h2 id="RST"><a href="#RST" class="headerlink" title="RST"></a>RST</h2><h4 id="请求建立连接端口不存在"><a href="#请求建立连接端口不存在" class="headerlink" title="请求建立连接端口不存在"></a>请求建立连接端口不存在</h4><p>经常会出现这种情况，请求建立连接的SYN报文段已经发送到了Server，但是Server检查到对应的目的端口并没有被监听（该端口绑定的应用程序没有启动）。这个时候Server在发送回给Client的ACK包中便会将<strong>RST标识符置1</strong>，用以通知Client连接无法建立。</p>
-<h4 id="异常终止连接"><a href="#异常终止连接" class="headerlink" title="异常终止连接"></a>异常终止连接</h4><p>通过发送<strong>RST</strong>而不是发送<strong>FIN</strong>报文段来结束TCP连接的方式也被称为<strong>异常释放</strong>。通常在某一个端在接收到对端发来不正常的报文时会发回一个<strong>RST</strong>给对端异常终止连接。这里讲的<strong>不正常</strong>可能不是报文段的内容有问题，而是无法处理该报文段。（在TCP保活定时器中应用中，在Client重启之后收到旧TCP连接对端服务器发来的探查报文段时，就会发回一个RST包让服务器终止连接。）<br>这样的异常终止连接有两个好处：</p>
+        <h1 id="Kotlin-Inline-Functions-2"><a href="#Kotlin-Inline-Functions-2" class="headerlink" title="Kotlin - Inline Functions 2"></a>Kotlin - Inline Functions 2</h1><h2 id="Reified-Type"><a href="#Reified-Type" class="headerlink" title="Reified Type"></a>Reified Type</h2><h3 id="runtime-available语义"><a href="#runtime-available语义" class="headerlink" title="runtime-available语义"></a><em>runtime-available语义</em></h3><p>定义部分内容翻译自官方文档：<a href="https://github.com/JetBrains/kotlin/blob/master/spec-docs/reified-type-parameters.md" target="_blank" rel="noopener">Semantics, Checks and Restrictions</a><br>什么是 <strong><em>runtime-available</em></strong> 类型?</p>
 <ul>
-<li>不需要执行四次握手，RST的<strong>接收端</strong>在收到该报文段之后将直接关闭。（RST的<strong>发送端</strong>之所以发送RST报文很可能是因为自己根本不能执行正常的四次握手来关闭TCP连接）</li>
-<li>RST的<strong>接收端</strong>知道对端出现了异常情况，从而进入到相应的<strong>异常处理流程</strong>。</li>
+<li>Kotlin的<strong><em>object</em></strong>、<strong><em>class</em></strong>、<strong><em>trait(已被废弃)</em></strong> 也被称为 <strong>classifier</strong></li>
+<li><strong>类型参数为空</strong>或者<strong>全部类型参数都被reified关键词修饰</strong>的classfier。<strong><em>Nothing</em></strong> 是一种例外情况。</li>
+<li>一个classifier有多个类型参数，但是每一个类型参数都是<strong>被reified修饰的runtime-available类型</strong>或者<strong>star-project(*)</strong></li>
+<li>（没有指classifier，也就可以是函数）拥有一个类型参数T，T被<strong>reified关键词修饰</strong>。</li>
 </ul>
+<h3 id="runtime-available的限制性"><a href="#runtime-available的限制性" class="headerlink" title="runtime-available的限制性"></a><em>runtime-available</em>的限制性</h3><ul>
+<li>不是<em>runtime-available</em>的不允许放在is, !is, as, as?等右边操作符的右边。</li>
+<li>只有单类型参数的<em>inline function</em>的类型参数能够用reified标记。</li>
+<li>Kotlin原生的Array类型是唯一一个类型参数能够使用reified来标记的。</li>
+<li>只有 <em>runtime-available</em> 的类型能够被当作一个参数传给 <em>reified类型参数</em>。</li>
+</ul>
+<h6 id="Note-坦白地说官方这部分文档所表达出来的意思跟实际情况-Kotlin-1-2-20-是有些出入的，也不知道是文档没有及时更新，还是Kotlin这部分特性后面还需要继续迭代更新。但不影响我们学习-inline-function-reified。"><a href="#Note-坦白地说官方这部分文档所表达出来的意思跟实际情况-Kotlin-1-2-20-是有些出入的，也不知道是文档没有及时更新，还是Kotlin这部分特性后面还需要继续迭代更新。但不影响我们学习-inline-function-reified。" class="headerlink" title="Note: 坦白地说官方这部分文档所表达出来的意思跟实际情况(Kotlin - 1.2.20)是有些出入的，也不知道是文档没有及时更新，还是Kotlin这部分特性后面还需要继续迭代更新。但不影响我们学习 inline function reified。"></a>Note: 坦白地说官方这部分文档所表达出来的意思跟实际情况(Kotlin - 1.2.20)是有些出入的，也不知道是文档没有及时更新，还是Kotlin这部分特性后面还需要继续迭代更新。但不影响我们学习 <em>inline function reified</em>。</h6><h3 id="reified作用"><a href="#reified作用" class="headerlink" title="reified作用"></a>reified作用</h3><p><strong>inline function reified</strong> 的典型使用场景是像反射这样，需要在运行时<strong>动态获取类型信息</strong>的情况。<strong>官方网站</strong>给了以下一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//声明</span><br><span class="line">inline fun &lt;reified T&gt; TreeNode.findParentOfType(): T? &#123;</span><br><span class="line">    var p = parent</span><br><span class="line">    while (p != null &amp;&amp; p !is T) &#123;</span><br><span class="line">        p = p.parent</span><br><span class="line">    &#125;</span><br><span class="line">    return p as T?</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//使用</span><br><span class="line">treeNode.findParentOfType&lt;MyTreeNode&gt;()</span><br></pre></td></tr></table></figure>
+<p>上面这使用例子并没有展示<strong>reified</strong>的真正作用，仅仅是展示了如何声明<strong>reified</strong>和调用被<strong>reified</strong>声明的<em>inline functions</em>。各位看官可以试试将<strong>reified</strong>拿掉，例子照样能正常工作。<br>真正体现reified作用的使用例子是下面这个：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inline fun &lt;reified T&gt; membersOf() = T::class.members</span><br></pre></td></tr></table></figure>
+<p>如果不加<strong>reified</strong>修饰，编译器是会报错的。因为被<strong>reified修饰的类型参数</strong>在编译期进行内联的时候就会被转为对应class的符号引用。下面这个例子清楚地展示了这个转换：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//Source code C.Kt</span><br><span class="line">class C &#123;</span><br><span class="line">&#125;</span><br><span class="line">fun a() &#123;</span><br><span class="line">    val a = C()</span><br><span class="line">    val b = membersOf&lt;String&gt;()</span><br><span class="line">&#125;</span><br><span class="line">inline fun &lt;reified T&gt; membersOf() = T::class.members</span><br></pre></td></tr></table></figure>
+<p>compiled之后:</p>
+<figure class="highlight plain"><figcaption><span>from "C.kt"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public final class com.maxtropy.viewtest.CKt &#123;</span><br><span class="line">  public static final void a();</span><br><span class="line">    Code:</span><br><span class="line">       0: new           #8                  // class com/maxtropy/viewtest/C</span><br><span class="line">       3: dup</span><br><span class="line">       4: invokespecial #11                 // Method com/maxtropy/viewtest/C.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">       7: astore_0</span><br><span class="line">       8: nop</span><br><span class="line">       9: ldc           #13                 // class java/lang/String</span><br><span class="line">      11: invokestatic  #19                 // Method kotlin/jvm/internal/Reflection.getOrCreateKotlinClass:(Ljava/lang/Class;)Lkotlin/reflect/KClass;</span><br><span class="line">      14: invokeinterface #25,  1           // InterfaceMethod kotlin/reflect/KClass.getMembers:()Ljava/util/Collection;</span><br><span class="line">      19: astore_1</span><br><span class="line">      20: return</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         
     
@@ -544,21 +549,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/01/18/TCP-DataFlow/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2018/01/18/TCP-Timer/" id="post_nav-older" class="next-content">
+        <a href="/2018/01/21/Dalvik-GC-Specification/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
