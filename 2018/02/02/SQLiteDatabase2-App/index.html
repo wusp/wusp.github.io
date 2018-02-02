@@ -43,7 +43,7 @@
     
     <title>
         
-            Kotlin Extension — Method | 
+            SQLiteDatabase2 - 创建、打开数据库 | 
         
         wusp Blog
     </title>
@@ -215,7 +215,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="wusp Blog">
-    <meta name="msapplication-starturl" content="http://yoursite.com/2018/01/14/Kotlin Extension — Method/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/02/02/SQLiteDatabase2-App/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="wusp Blog">
@@ -230,16 +230,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/2018/01/14/Kotlin Extension — Method/">
+    <meta property="og:url" content="http://yoursite.com/2018/02/02/SQLiteDatabase2-App/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Kotlin Extension — Method | wusp Blog">
+    <meta property="og:title" content="SQLiteDatabase2 - 创建、打开数据库 | wusp Blog">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="">
     
 
     
-        <meta property="article:published_time" content="Sun Jan 14 2018 00:00:00 GMT+0800">
-        <meta property="article:modified_time" content="Wed Jan 17 2018 23:54:02 GMT+0800">
+        <meta property="article:published_time" content="Fri Feb 02 2018 22:03:01 GMT+0800">
+        <meta property="article:modified_time" content="Fri Feb 02 2018 22:05:56 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -247,7 +247,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2018/01/14/Kotlin Extension — Method/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/02/02/SQLiteDatabase2-App/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -259,10 +259,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yoursite.com/2018/01/14/Kotlin Extension — Method/index.html",
-    "headline": "Kotlin Extension — Method",
-    "datePublished": "Sun Jan 14 2018 00:00:00 GMT+0800",
-    "dateModified": "Wed Jan 17 2018 23:54:02 GMT+0800",
+    "mainEntityOfPage": "http://yoursite.com/2018/02/02/SQLiteDatabase2-App/index.html",
+    "headline": "SQLiteDatabase2 - 创建、打开数据库",
+    "datePublished": "Fri Feb 02 2018 22:03:01 GMT+0800",
+    "dateModified": "Fri Feb 02 2018 22:05:56 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "wusp",
@@ -346,7 +346,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Kotlin-Extension-—-Method"><span class="post-toc-number">1.</span> <span class="post-toc-text">Kotlin Extension — Method</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正文"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">正文</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-Extensions-resolving"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">1. Extensions resolving</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-实例方法与Extension方法同名"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">2. 实例方法与Extension方法同名</span></a></li></ol></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#本篇只局限于Framework层源码，源码版本为Android-8-0"><span class="post-toc-number">1.</span> <span class="post-toc-text">本篇只局限于Framework层源码，源码版本为Android 8.0</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建、打开数据库的时刻"><span class="post-toc-number"></span> <span class="post-toc-text">创建、打开数据库的时刻</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#为什么要使用lazy-initialization呢"><span class="post-toc-number">1.</span> <span class="post-toc-text">为什么要使用lazy initialization呢</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建、打开数据库的流程"><span class="post-toc-number"></span> <span class="post-toc-text">创建、打开数据库的流程</span></a>
     </ul>
     
 
@@ -378,7 +378,7 @@
         
     
             <p class="article-headline-p">
-                Kotlin Extension — Method
+                SQLiteDatabase2 - 创建、打开数据库
             </p>
         </div>
 
@@ -397,7 +397,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>wusp</strong>
-        <span>1月 14, 2018</span>
+        <span>2月 02, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -429,7 +429,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Kotlin Extension — Method&url=http://yoursite.com/2018/01/14/Kotlin Extension — Method/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=SQLiteDatabase2 - 创建、打开数据库&url=http://yoursite.com/2018/02/02/SQLiteDatabase2-App/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -438,7 +438,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Kotlin Extension — Method&url=http://yoursite.com/2018/01/14/Kotlin Extension — Method/index.html&via=wusp" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=SQLiteDatabase2 - 创建、打开数据库&url=http://yoursite.com/2018/02/02/SQLiteDatabase2-App/index.html&via=wusp" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -447,7 +447,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/01/14/Kotlin Extension — Method/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/02/SQLiteDatabase2-App/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -456,7 +456,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/01/14/Kotlin Extension — Method/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/02/SQLiteDatabase2-App/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -481,27 +481,27 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="Kotlin-Extension-—-Method"><a href="#Kotlin-Extension-—-Method" class="headerlink" title="Kotlin Extension — Method"></a>Kotlin Extension — Method</h1><p>对大多数Java开发者来说（尤其是享受着Android工程顶尖架构的Android Developer），<strong>装饰者模式</strong>是我们经常接触的一种设计模式。装饰者模式带给开发者的灵活性和简洁性如何在Kotlin中也能用到呢？答案就是 —— Kotlin Extension。<br>但需要记住，<strong>可以用Extension来实现设计中的装饰者模式，但其绝对不仅仅只是个Kotlin版的装饰者模式！</strong></p>
-<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a><strong>正文</strong></h2><p>当我们使用Extension特性的时候，需要指定一个<strong>Receiver</strong>, 例如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fun C.foo()&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其<strong>Receiver</strong>就是C。</p>
-<h3 id="1-Extensions-resolving"><a href="#1-Extensions-resolving" class="headerlink" title="1. Extensions resolving"></a>1. Extensions resolving</h3><p>假设我们写一个简单的类Parent (in Parent.kt):</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Parent &#123;</span><br><span class="line">    val value : Int = 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>为了方便比较，再一些简单的类Other，同时在Other中写一个Parent的Extension <em>markValue()</em> (in Other.kt):</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Other &#123;</span><br><span class="line">    val const = 2</span><br><span class="line"></span><br><span class="line">    fun Parent.markValueOne() : Int &#123;</span><br><span class="line">        return this.value + 1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun Parent.markValueTwo() : Int &#123;</span><br><span class="line">    return this.value + 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在经过kotlinc编译之后，通过javap查看相关的class文件，<em>markValueOne</em> 和 <em>markValueTwo</em> 都被编译成了<strong>final</strong>的方法。<br><strong><em>Other.class</em></strong></p>
-<figure class="highlight plain"><figcaption><span>from "Other.kt"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public final class com.maxtropy.viewtest.Other &#123;</span><br><span class="line">  public final int getConst();</span><br><span class="line">    Code:</span><br><span class="line">       0: aload_0</span><br><span class="line">       1: getfield      #11                 // Field const:I</span><br><span class="line">       4: ireturn</span><br><span class="line"></span><br><span class="line">  public final int markValueOne(com.maxtropy.viewtest.Parent);</span><br><span class="line">    Code:</span><br><span class="line">       0: aload_1</span><br><span class="line">       1: ldc           #18                 // String $receiver</span><br><span class="line">       3: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V</span><br><span class="line">       6: aload_1</span><br><span class="line">       7: invokevirtual #29                 // Method com/maxtropy/viewtest/Parent.getValue:()I</span><br><span class="line">      10: iconst_1</span><br><span class="line">      11: iadd</span><br><span class="line">      12: ireturn</span><br><span class="line"></span><br><span class="line">  public com.maxtropy.viewtest.Other();</span><br><span class="line">    Code:</span><br><span class="line">       0: aload_0</span><br><span class="line">       1: invokespecial #34                 // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">       4: aload_0</span><br><span class="line">       5: iconst_2</span><br><span class="line">       6: putfield      #11                 // Field const:I</span><br><span class="line">       9: return</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong><em>OtherKt.class</em></strong></p>
-<figure class="highlight plain"><figcaption><span>from "Other.kt"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public final class com.maxtropy.viewtest.OtherKt &#123;</span><br><span class="line">  public static final int markValueTwo(com.maxtropy.viewtest.Parent);</span><br><span class="line">    Code:</span><br><span class="line">       0: aload_0</span><br><span class="line">       1: ldc           #9                  // String $receiver</span><br><span class="line">       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V</span><br><span class="line">       6: aload_0</span><br><span class="line">       7: invokevirtual #21                 // Method com/maxtropy/viewtest/Parent.getValue:()I</span><br><span class="line">      10: iconst_2</span><br><span class="line">      11: iadd</span><br><span class="line">      12: ireturn</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>NOTE: 需要注意的是虽然<em>markValueOne</em>的写法能够通过编译，但如果写的.kt，是拿不到markValueOne方法引用的。（令人奇怪的是写.java却能够拿到markValueOne方法的引用 ???）</strong><br>很明显的可以看出来，无论是哪种写法，都会将Parent类型实例作为函数的第一个入参传进方法当中。而在方法中用到的this指针，指的便是这一个Parent实例，<strong>而不是传统Java编程习惯中this永远指向的是当前被调用实例方法对应的实例</strong>。</p>
-<h3 id="2-实例方法与Extension方法同名"><a href="#2-实例方法与Extension方法同名" class="headerlink" title="2. 实例方法与Extension方法同名"></a>2. 实例方法与Extension方法同名</h3><p>倘若在Receiver类型中和Extension中声明了同名的方法呢？，例如:</p>
-<p>在Parent中声明了一个方法markValueTwo()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Parent &#123;</span><br><span class="line">    val value : Int = 1</span><br><span class="line"></span><br><span class="line">    fun markValueTwo(): Int &#123;</span><br><span class="line">        return this.value + 99</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后在另一个类Other的.kt文件中使用Extension并让Extension的方法同Parent中的方法名一样</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Other &#123;</span><br><span class="line">    fun getParentMarkValue(): Int &#123;</span><br><span class="line">        return Parent().markValueTwo()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun Parent.markValueTwo(): Int &#123;</span><br><span class="line">    return this.value + 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>经过kotlinc的编译（<strong>在编译过程中其实就会有warning</strong>）, 会发现Other.class文件的中:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Compiled from &quot;Other.kt&quot;</span><br><span class="line">public final class com.maxtropy.viewtest.Other &#123;</span><br><span class="line">  public final int getParentMarkValue();</span><br><span class="line">    Code:</span><br><span class="line">       0: new           #8                  // class com/maxtropy/viewtest/Parent</span><br><span class="line">       3: dup</span><br><span class="line">       4: invokespecial #12                 // Method com/maxtropy/viewtest/Parent.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">       7: invokevirtual #15                 // Method com/maxtropy/viewtest/Parent.markValueTwo:()I</span><br><span class="line">      10: ireturn</span><br><span class="line"></span><br><span class="line">  public com.maxtropy.viewtest.Other();</span><br><span class="line">    Code:</span><br><span class="line">       0: aload_0</span><br><span class="line">       1: invokespecial #18                 // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">       4: return</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在字节码执行Parent实例的markValueTwo()方法时调用的是虚方法，毫无疑问调用的其实就是实例中对应的<strong>实例方法</strong>。</p>
+        <h6 id="本篇只局限于Framework层源码，源码版本为Android-8-0"><a href="#本篇只局限于Framework层源码，源码版本为Android-8-0" class="headerlink" title="本篇只局限于Framework层源码，源码版本为Android 8.0"></a>本篇只局限于Framework层源码，源码版本为Android 8.0</h6><h3 id="创建、打开数据库的时刻"><a href="#创建、打开数据库的时刻" class="headerlink" title="创建、打开数据库的时刻"></a>创建、打开数据库的时刻</h3><p>对于Android经典的SQLiteDatabase使用场景-ContentProvider，官方例程都会建议在ContentProvider的onCreate()函数里实例化自己实现的SQLiteOpenHelper。当然如果仅仅是在App内部使用的话，是没有必要使用ContentProvider的，直接使用SQLiteOpenHelper操作数据库就可以了。<br>那么对应的SQLiteDatabase是在SQLiteOpenHelper中创建或者打开的吗？</p>
+<blockquote>
+<p>NOT! NOT! NOT!</p>
+</blockquote>
+<p>这里SQLiteOpenHelper默认使用了 <strong><em>lazy initialization</em></strong> 的技术，SQLiteOpenHelper操作的SQLiteDatabase对象其实是在第一次成功调用 <em>getWritableDatabase() / getReadableDatabase()</em> 时。当然如果想要强行提前SQLiteDatabase创建/打开的时间也是可以的，在SQLiteOpenHelper构造函数或者ContentProvider onCreate() 函数中调用 <em>getWritableDatabase() / getReadableDatabase()</em> 都是可以的。</p>
+<h6 id="为什么要使用lazy-initialization呢"><a href="#为什么要使用lazy-initialization呢" class="headerlink" title="为什么要使用lazy initialization呢"></a>为什么要使用lazy initialization呢</h6><p>众所周知，如果在App中实现并注册了一个 ContentProvider，那么会在App的启动时创建对应的 ContentProvider实例，回调其生命周期 onCreate() 函数，然后注册进AMS。不使用 lazy initialization 技术直接在 SQLiteOpenHelper 构造函数中打开数据库的话，万一在App运行过程，又或者是系统运行过程（一个专门用来提供ContentProvider服务的App）中一直用不到这个数据库的话，相关的资源就会被浪费。同时，数据库的创建、打开、升级是一项耗时操作，如果放在 ContentProvider的 onCreate() 函数里面去做还会拖慢App的启动速度，这些都是一个高性能App需要避免的问题。<br>因此，在大多数情况下，都不建议App改变创建、打开SQLiteDatabase的时机。除非App在启动时设置了专门的 <strong><em>warm-up</em></strong> 时间段，出于追求更好性能的目标，建议你在 warm-up 阶段执行SQLiteOpenHelper创建、打开SQLiteDatabase的操作。</p>
+<h3 id="创建、打开数据库的流程"><a href="#创建、打开数据库的流程" class="headerlink" title="创建、打开数据库的流程"></a>创建、打开数据库的流程</h3><p>无论是 <em>getWritableDatabase() 还是 getReadableDatabase()</em>， 最后都是进行到 <strong>getDatabaseLocked()</strong>，并且是<strong>加锁调用</strong>。通过源码看看流程。</p>
+<p>SQLiteOpenHelper.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line">private SQLiteDatabase getDatabaseLocked(boolean writable) &#123;</span><br><span class="line">    //已经有缓存了，直接返回。</span><br><span class="line">    if (mDatabase != null) &#123;</span><br><span class="line">        if (!mDatabase.isOpen()) &#123;</span><br><span class="line">            // Darn!  The user closed the database by calling mDatabase.close().</span><br><span class="line">            mDatabase = null;</span><br><span class="line">        &#125; else if (!writable || !mDatabase.isReadOnly()) &#123;</span><br><span class="line">            // The database is already open for business.</span><br><span class="line">            return mDatabase;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //创建、打开、升级数据库是耗时操作，所以我们需要阻断执行完成前的调用</span><br><span class="line">    if (mIsInitializing) &#123;</span><br><span class="line">        throw new IllegalStateException(&quot;getDatabase called recursively&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    SQLiteDatabase db = mDatabase;</span><br><span class="line">    try &#123;</span><br><span class="line">        mIsInitializing = true;</span><br><span class="line">        if (db != null) &#123;</span><br><span class="line">            //已经创建过，reopen</span><br><span class="line">            if (writable &amp;&amp; db.isReadOnly()) &#123;</span><br><span class="line">                db.reopenReadWrite();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else if (mName == null) &#123;</span><br><span class="line">            // in-memory DB.</span><br><span class="line">            db = SQLiteDatabase.create(null);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            // 创建一个新的DB</span><br><span class="line">            try &#123;</span><br><span class="line">                if (DEBUG_STRICT_READONLY &amp;&amp; !writable) &#123;</span><br><span class="line">                    // read-only DB</span><br><span class="line">                    //@@ key: 获取db文件所在的绝对路径</span><br><span class="line">                    final String path = mContext.getDatabasePath(mName).getPath();</span><br><span class="line">                    db = SQLiteDatabase.openDatabase(path, mFactory,</span><br><span class="line">                            SQLiteDatabase.OPEN_READONLY, mErrorHandler);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    // writable DB</span><br><span class="line">                    //@@ key: mName, 传进来的.db filename, 也是数据库所在的位置指定</span><br><span class="line">                    db = mContext.openOrCreateDatabase(mName, mEnableWriteAheadLogging ?</span><br><span class="line">                            Context.MODE_ENABLE_WRITE_AHEAD_LOGGING : 0,</span><br><span class="line">                            mFactory, mErrorHandler);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; catch (SQLiteException ex) &#123;</span><br><span class="line">                if (writable) &#123;</span><br><span class="line">                    throw ex;</span><br><span class="line">                &#125;</span><br><span class="line">                Log.e(TAG, &quot;Couldn&apos;t open &quot; + mName</span><br><span class="line">                        + &quot; for writing (will try read-only):&quot;, ex);</span><br><span class="line">                //打开writable DB出错，重新尝试以read-only 方法打开</span><br><span class="line">                final String path = mContext.getDatabasePath(mName).getPath();</span><br><span class="line">                db = SQLiteDatabase.openDatabase(path, mFactory,</span><br><span class="line">                        SQLiteDatabase.OPEN_READONLY, mErrorHandler);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //配置刚刚打开的DB。（由子类来实现）</span><br><span class="line">        onConfigure(db);</span><br><span class="line"></span><br><span class="line">        final int version = db.getVersion();</span><br><span class="line">        if (version != mNewVersion) &#123;</span><br><span class="line">            //不能升级read-only的数据库</span><br><span class="line">            if (db.isReadOnly()) &#123;</span><br><span class="line">                throw new SQLiteException(&quot;Can&apos;t upgrade read-only database from version &quot; +</span><br><span class="line">                        db.getVersion() + &quot; to &quot; + mNewVersion + &quot;: &quot; + mName);</span><br><span class="line">            &#125;</span><br><span class="line">            //小于最低支持的版本，直接删除重新创建一个.</span><br><span class="line">            if (version &gt; 0 &amp;&amp; version &lt; mMinimumSupportedVersion) &#123;</span><br><span class="line">                File databaseFile = new File(db.getPath());</span><br><span class="line">                //提供回调</span><br><span class="line">                onBeforeDelete(db);</span><br><span class="line">                db.close();</span><br><span class="line">                if (SQLiteDatabase.deleteDatabase(databaseFile)) &#123;</span><br><span class="line">                    //删除成功，重新获取一个</span><br><span class="line">                    mIsInitializing = false;</span><br><span class="line">                    return getDatabaseLocked(writable);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    throw new IllegalStateException(&quot;Unable to delete obsolete database &quot;</span><br><span class="line">                            + mName + &quot; with version &quot; + version);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                //根据版本进行操作</span><br><span class="line">                db.beginTransaction();</span><br><span class="line">                try &#123;</span><br><span class="line">                    if (version == 0) &#123;</span><br><span class="line">                        //版本=0， 第一次创建的数据库</span><br><span class="line">                        onCreate(db);</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        //数据库已经被降级</span><br><span class="line">                        if (version &gt; mNewVersion) &#123;</span><br><span class="line">                            onDowngrade(db, version, mNewVersion);</span><br><span class="line">                        &#125; else &#123;</span><br><span class="line">                            //升级</span><br><span class="line">                            onUpgrade(db, version, mNewVersion);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    db.setVersion(mNewVersion);</span><br><span class="line">                    db.setTransactionSuccessful();</span><br><span class="line">                &#125; finally &#123;</span><br><span class="line">                    db.endTransaction();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //回调并记录</span><br><span class="line">        onOpen(db);</span><br><span class="line">        if (db.isReadOnly()) &#123;</span><br><span class="line">            Log.w(TAG, &quot;Opened &quot; + mName + &quot; in read-only mode&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        mDatabase = db;</span><br><span class="line">        return db;</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">        mIsInitializing = false;</span><br><span class="line">        if (db != null &amp;&amp; db != mDatabase) &#123;</span><br><span class="line">            db.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里有几点需要重点关注一下，虽然很多工程师对这些概念已经耳熟能详.</p>
+<ul>
+<li>reopenReadWrite() 可以将一个已经存在的 <strong><em>Read-only</em></strong> DB 更新成可写的。</li>
+<li>使用SQLiteDatabase.create(null) 可以创建一个 <strong><em>in-memory</em></strong> DB。</li>
+<li>Read-only 数据库路径的获取实现在 ContextImpl 中；可写数据库的数据库路径就直接是 <strong><em>mName</em></strong> 。</li>
+<li>如果以 <strong><em>Writable</em></strong> 的方法打开数据库出错，会尝试重新以 <strong><em>Read-only</em></strong> 的方式去打开一次。</li>
+<li>如果操作数据库的版本小于 <strong>本SQLiteOpenHelper支持的最小版本（在构造器中传入，默认0）</strong>，会将数据库删除，然后重新创建一个。</li>
+</ul>
+<p>获取Writable DB 的 <strong>SQLiteDatabase.openOrCreateDatabase()</strong>最后到转接到了 <strong>SQLiteDatabase.openDatabase</strong>，在里面先新创建一个SQLiteDatabase对象，然后执行它的open() 操作。</p>
+<p>SQLiteDatabase.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public static SQLiteDatabase openOrCreateDatabase(String path, CursorFactory factory,</span><br><span class="line">        DatabaseErrorHandler errorHandler) &#123;</span><br><span class="line">    return openDatabase(path, factory, CREATE_IF_NECESSARY, errorHandler);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public static SQLiteDatabase openDatabase(String path, CursorFactory factory, int flags,</span><br><span class="line">        DatabaseErrorHandler errorHandler) &#123;</span><br><span class="line">    SQLiteDatabase db = new SQLiteDatabase(path, flags, factory, errorHandler);</span><br><span class="line">    db.open();</span><br><span class="line">    return db;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">private void open() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            //根据在构造器中传入的配置打开，第一次尝试</span><br><span class="line">            openInner();</span><br><span class="line">        &#125; catch (SQLiteDatabaseCorruptException ex) &#123;</span><br><span class="line">            //失败之后先进行错误通知，再重试一次。</span><br><span class="line">            onCorruption();</span><br><span class="line">            openInner();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; catch (SQLiteException ex) &#123;</span><br><span class="line">        Log.e(TAG, &quot;Failed to open database &apos;&quot; + getLabel() + &quot;&apos;.&quot;, ex);</span><br><span class="line">        close();</span><br><span class="line">        throw ex;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void openInner() &#123;</span><br><span class="line">    synchronized (mLock) &#123;</span><br><span class="line">        assert mConnectionPoolLocked == null;</span><br><span class="line">        mConnectionPoolLocked = SQLiteConnectionPool.open(mConfigurationLocked);</span><br><span class="line">        mCloseGuardLocked.open(&quot;close&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    synchronized (sActiveDatabases) &#123;</span><br><span class="line">        sActiveDatabases.put(this, null);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>之后的open操作就会转移到SQLiteConnectionPool里面执行；如果执行成功，则会返回一个数据库连接池SQLiteConnectionPool，记录在<strong>mConnectionPoolLocked</strong>中以待后面使用。<br>再往下就是SQLiteConnection如何执行open() ，SQLiteConnection是个JNI方法的包装类。因此，对App工程师来说了解到SQLiteOpenHelped的数据库操作最后都是由<strong>SQLiteConnectionPool</strong>和其中管理的<strong>SQLiteConnection</strong>来完成就足够了。</p>
 
         
     
@@ -548,21 +548,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/01/14/Kotlin Extension — Properties&Companion/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2018/01/14/Kotlin Extension — Declaring Extensions as Members/" id="post_nav-older" class="next-content">
+        <a href="/2018/01/27/LruCache/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
