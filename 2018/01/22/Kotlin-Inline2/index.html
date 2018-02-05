@@ -239,7 +239,7 @@
 
     
         <meta property="article:published_time" content="Mon Jan 22 2018 18:10:27 GMT+0800">
-        <meta property="article:modified_time" content="Mon Jan 22 2018 18:15:04 GMT+0800">
+        <meta property="article:modified_time" content="Sat Feb 03 2018 12:52:33 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -262,7 +262,7 @@
     "mainEntityOfPage": "http://yoursite.com/2018/01/22/Kotlin-Inline2/index.html",
     "headline": "Kotlin Inline Function 2",
     "datePublished": "Mon Jan 22 2018 18:10:27 GMT+0800",
-    "dateModified": "Mon Jan 22 2018 18:15:04 GMT+0800",
+    "dateModified": "Sat Feb 03 2018 12:52:33 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "wusp",
@@ -503,6 +503,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//Source code C.Kt</span><br><span class="line">class C &#123;</span><br><span class="line">&#125;</span><br><span class="line">fun a() &#123;</span><br><span class="line">    val a = C()</span><br><span class="line">    val b = membersOf&lt;String&gt;()</span><br><span class="line">&#125;</span><br><span class="line">inline fun &lt;reified T&gt; membersOf() = T::class.members</span><br></pre></td></tr></table></figure>
 <p>compiled之后:</p>
 <figure class="highlight plain"><figcaption><span>from "C.kt"</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public final class com.maxtropy.viewtest.CKt &#123;</span><br><span class="line">  public static final void a();</span><br><span class="line">    Code:</span><br><span class="line">       0: new           #8                  // class com/maxtropy/viewtest/C</span><br><span class="line">       3: dup</span><br><span class="line">       4: invokespecial #11                 // Method com/maxtropy/viewtest/C.&quot;&lt;init&gt;&quot;:()V</span><br><span class="line">       7: astore_0</span><br><span class="line">       8: nop</span><br><span class="line">       9: ldc           #13                 // class java/lang/String</span><br><span class="line">      11: invokestatic  #19                 // Method kotlin/jvm/internal/Reflection.getOrCreateKotlinClass:(Ljava/lang/Class;)Lkotlin/reflect/KClass;</span><br><span class="line">      14: invokeinterface #25,  1           // InterfaceMethod kotlin/reflect/KClass.getMembers:()Ljava/util/Collection;</span><br><span class="line">      19: astore_1</span><br><span class="line">      20: return</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第9行字节码指令指示从常量池中加载String类型信息的常量，也就是String的符号引用。这个时候String类型常量处于操作栈栈顶，因此第11行字节码操作指令都是作用在他上面，创建了一个包含String类型信息的KClass类型实例；并在第12行，<br>通过getMembers方法获取其中的信息。</p>
 
         
     
@@ -660,7 +661,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/Kotlin/">Kotlin<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/Network/">Network<span class="sidebar_archives-count">4</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/categories/Kotlin/">Kotlin<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/Network/">Network<span class="sidebar_archives-count">4</span></a>
             </ul>
         </li>
         
@@ -676,7 +677,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">17</span>
+                <span class="sidebar-badge">18</span>
             </a>
         </li>
         

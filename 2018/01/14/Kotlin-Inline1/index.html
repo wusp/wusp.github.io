@@ -239,7 +239,7 @@
 
     
         <meta property="article:published_time" content="Sun Jan 14 2018 00:00:00 GMT+0800">
-        <meta property="article:modified_time" content="Mon Jan 22 2018 17:39:43 GMT+0800">
+        <meta property="article:modified_time" content="Sat Feb 03 2018 12:40:21 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -262,7 +262,7 @@
     "mainEntityOfPage": "http://yoursite.com/2018/01/14/Kotlin-Inline1/index.html",
     "headline": "Kotlin Inline Function 1",
     "datePublished": "Sun Jan 14 2018 00:00:00 GMT+0800",
-    "dateModified": "Mon Jan 22 2018 17:39:43 GMT+0800",
+    "dateModified": "Sat Feb 03 2018 12:40:21 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "wusp",
@@ -346,7 +346,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Kotlin-Inline-Functions-1"><span class="post-toc-number">1.</span> <span class="post-toc-text">Kotlin - Inline Functions 1</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Inline-Basics"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">Inline Basics</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Inline-Function"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">Inline Function</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#1-对于每一个lambda函数都需要分配一定的内存来创建和维护Function对象。"><span class="post-toc-number">1.0.2.0.0.1.</span> <span class="post-toc-text">1. 对于每一个lambda函数都需要分配一定的内存来创建和维护Function对象。</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#1-Inline-Function-中的内容都完全被嵌入到了-c-当中，这意味着减少了从-c-到真正执行方法-foo1-foo2-之间的的函数调用"><span class="post-toc-number">1.0.2.0.0.2.</span> <span class="post-toc-text">1. Inline Function 中的内容都完全被嵌入到了 c() 当中，这意味着减少了从 c() 到真正执行方法 foo1() foo2() 之间的的函数调用</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#2-lambda表达式对应的函数对象也完全消失，消除了因为保存lambda表达式函数对象而造成的内存损耗。"><span class="post-toc-number">1.0.2.0.0.3.</span> <span class="post-toc-text">2. lambda表达式对应的函数对象也完全消失，消除了因为保存lambda表达式函数对象而造成的内存损耗。</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Non-local-returns"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">Non-local returns</span></a></li></ol></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Kotlin-Inline-Functions-1"><span class="post-toc-number">1.</span> <span class="post-toc-text">Kotlin - Inline Functions 1</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Inline-Basics"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">Inline Basics</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Inline-Function"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">Inline Function</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#1-对于每一个lambda函数都需要分配一定的内存来创建和维护Function对象。"><span class="post-toc-number">1.0.2.0.0.1.</span> <span class="post-toc-text">1. 对于每一个lambda函数都需要分配一定的内存来创建和维护Function对象。</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#2-在调用lambda函数的时候，需要先访问到闭包对象，再访问到真正的函数执行块。"><span class="post-toc-number">1.0.2.0.0.2.</span> <span class="post-toc-text">2. 在调用lambda函数的时候，需要先访问到闭包对象，再访问到真正的函数执行块。</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#1-Inline-Function-中的内容都完全被嵌入到了-c-当中，这意味着减少了从-c-到真正执行方法-foo1-foo2-之间的的函数调用"><span class="post-toc-number">1.0.2.0.0.3.</span> <span class="post-toc-text">1. Inline Function 中的内容都完全被嵌入到了 c() 当中，这意味着减少了从 c() 到真正执行方法 foo1() foo2() 之间的的函数调用</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#2-lambda表达式对应的函数对象也完全消失，消除了因为保存lambda表达式函数对象而造成的内存损耗。"><span class="post-toc-number">1.0.2.0.0.4.</span> <span class="post-toc-text">2. lambda表达式对应的函数对象也完全消失，消除了因为保存lambda表达式函数对象而造成的内存损耗。</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Non-local-returns"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">Non-local returns</span></a></li></ol></li></ol></li></ol>
     </ul>
     
 
@@ -498,8 +498,7 @@
 </ul>
 <p>但其实文档应该还想表达另外一件事情：<strong>方法内联的优化效果很难在JVM外部，更不用说单独观测到</strong>。<br>HotSpot的方法内联是（晚期）JVM运行期进行方法内联的代表作之一，而Kotlin Inline Functions则是典型的在（早期）编译期进行方法内联。</p>
 <h3 id="Inline-Function"><a href="#Inline-Function" class="headerlink" title="Inline Function"></a>Inline Function</h3><p>首先，Kotlin的内联方法优化针对的是lambda表达式（如果不是针对lambda表达式使用IDE亦提示）。<br>我们知道，在Kotlin中，Function是”一等公民”，每一个函数都是一个对象，并且拥有其对应的闭包。也即是说：</p>
-<h6 id="1-对于每一个lambda函数都需要分配一定的内存来创建和维护Function对象。"><a href="#1-对于每一个lambda函数都需要分配一定的内存来创建和维护Function对象。" class="headerlink" title="1. 对于每一个lambda函数都需要分配一定的内存来创建和维护Function对象。"></a>1. 对于每一个lambda函数都需要分配一定的内存来创建和维护Function对象。</h6><p>######2. 在调用lambda函数的时候，需要先访问到闭包对象，再访问到真正的函数执行块。</p>
-<p>在多数情况下这些东西对性能的影响可以忽略不计，但是在对性能有要求时，这便是我们可以优化提升的地方。而Kotlin <strong>Inline Function</strong> 可以轻松地消除这些东西对于性能的损耗，而实现的方式类似于JVM运行期的Method Inlining(方法内联)，这也是为什么Kotlin将这一手段称之为”<strong>Inline Function</strong>“</p>
+<h6 id="1-对于每一个lambda函数都需要分配一定的内存来创建和维护Function对象。"><a href="#1-对于每一个lambda函数都需要分配一定的内存来创建和维护Function对象。" class="headerlink" title="1. 对于每一个lambda函数都需要分配一定的内存来创建和维护Function对象。"></a>1. 对于每一个lambda函数都需要分配一定的内存来创建和维护Function对象。</h6><h6 id="2-在调用lambda函数的时候，需要先访问到闭包对象，再访问到真正的函数执行块。"><a href="#2-在调用lambda函数的时候，需要先访问到闭包对象，再访问到真正的函数执行块。" class="headerlink" title="2. 在调用lambda函数的时候，需要先访问到闭包对象，再访问到真正的函数执行块。"></a>2. 在调用lambda函数的时候，需要先访问到闭包对象，再访问到真正的函数执行块。</h6><p>在多数情况下这些东西对性能的影响可以忽略不计，但是在对性能有要求时，这便是我们可以优化提升的地方。而Kotlin <strong>Inline Function</strong> 可以轻松地消除这些东西对于性能的损耗，而实现的方式类似于JVM运行期的Method Inlining(方法内联)，这也是为什么Kotlin将这一手段称之为”<strong>Inline Function</strong>“</p>
 <p>通过查看编译生成的.class文件字节码，可以清楚地看到Inline Function做的事情：</p>
 <p>考虑这样一个例子，我们需要确保在 <em>c()</em> 中先执行了D类的实例方法 <em>open()</em> ，如果执行成功了再执行一块函数块（lambda），里面执行 <em>foo1() foo2()</em>。对于这个lambda函数块的执行使用 <strong>inline</strong> 来优化。<br>写成.kt (Kotlin Source File)是这个样子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class C &#123;</span><br><span class="line">    fun c() &#123;</span><br><span class="line">        open(D1()) &#123;</span><br><span class="line">            foo1()</span><br><span class="line">            foo2()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun foo1(): Int &#123;</span><br><span class="line">    return 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun foo2(): Int &#123;</span><br><span class="line">    return 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">inline fun &lt;T&gt; open(d: D, body: () -&gt; T) &#123;</span><br><span class="line">    if (d.open()) &#123;</span><br><span class="line">        body()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -515,7 +514,6 @@
 <li>由于写的是 <strong>NotNull</strong> 的参数，首先会对入参进行非空的检查（<strong>性能损耗3：进行不必要的非空检查</strong>），在d.open 确认之后开始执行lamdba函数块中的方法，在这里也就是执行函数对象对应的 <em>invoke()</em> （<strong>性能损耗4: 再次方法调用</strong>）。在 <em>invoke()</em> 方法中才是真正的对 <em>foo1() foo2()</em> 方法进行调用：</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public final int invoke();</span><br><span class="line">    Code:</span><br><span class="line">       0: invokestatic  #23                 // Method com/maxtropy/viewtest/CKt.foo1:()I</span><br><span class="line">       3: pop</span><br><span class="line">       4: invokestatic  #26                 // Method com/maxtropy/viewtest/CKt.foo2:()I</span><br><span class="line">       7: ireturn</span><br></pre></td></tr></table></figure>
-<p>哇！你猜Inline Function为我们做的性能优化 <strong>是不是不是很少</strong> 呢？</p>
 <h3 id="Non-local-returns"><a href="#Non-local-returns" class="headerlink" title="Non-local returns"></a>Non-local returns</h3><p>由于我们知道在使用 <strong>inline</strong> 时，Kotlin编译器会自动帮我们消除lambda函数对应的enclosing对象。因此，想要从lambda函数中使用 <em>return</em> 关键字来<strong>退出调用inline函数的enclosing函数</strong> （上面第一个例子中inline函数是Ckt.class中的open()， 调用open()函数的enclosing函数是C.class中的c() ）<strong>是可以的</strong>.<br>官方把这叫作 <strong>non-local</strong> returns.<br><strong>根本原理</strong>：每一个lambda函数都对应一个enclosing函数，<strong>不带label</strong> 的return只能退出一个函数。（在Kotlin中普通的return同在Java中一样，相对应的都是方法返回字节码，而方法返回字节码的字面意就是<strong>退出处于当前栈顶的执行方法</strong>。）Inline Function的lambda函数执行其实都在enclosing函数的闭包中，return退出lambda其实也就是退出enclosing函数。<br>【<strong>!!!</strong>】从上面的例子也可以很明显的看到，lambda不能直接退出没被 <strong>inline</strong> 修饰的函数是因为lambda函数的执行都是在其 <strong>Function对象的invoke()</strong> 中，因此lambda中的return也仅仅只是退出 invoke() 罢了。</p>
 
         
@@ -563,7 +561,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/01/18/TCP-Basics-0/" id="post_nav-newer" class="prev-content">
+        <a href="/2018/01/14/Kotlin Extension — Method/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -577,7 +575,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2018/01/14/Kotlin Extension — Properties&Companion/" id="post_nav-older" class="next-content">
+        <a href="/2018/01/14/Kotlin Extension — Declaring Extensions as Members/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
@@ -674,7 +672,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/Kotlin/">Kotlin<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/Network/">Network<span class="sidebar_archives-count">4</span></a>
+                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/categories/Kotlin/">Kotlin<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/Network/">Network<span class="sidebar_archives-count">4</span></a>
             </ul>
         </li>
         
@@ -690,7 +688,7 @@
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">17</span>
+                <span class="sidebar-badge">18</span>
             </a>
         </li>
         
