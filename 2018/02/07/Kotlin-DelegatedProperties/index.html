@@ -43,7 +43,7 @@
     
     <title>
         
-            归档 | 
+            Kotlin Delegated Properties | 
         
         wusp Blog
     </title>
@@ -215,7 +215,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="wusp Blog">
-    <meta name="msapplication-starturl" content="http://yoursite.com/archives/page/2/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/02/07/Kotlin-DelegatedProperties/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="wusp Blog">
@@ -230,13 +230,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/archives/page/2/">
+    <meta property="og:url" content="http://yoursite.com/2018/02/07/Kotlin-DelegatedProperties/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档 | wusp Blog">
+    <meta property="og:title" content="Kotlin Delegated Properties | wusp Blog">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="">
     
 
+    
+        <meta property="article:published_time" content="Wed Feb 07 2018 16:11:50 GMT+0800">
+        <meta property="article:modified_time" content="Wed Feb 07 2018 16:12:45 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -244,13 +247,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/archives/page/2/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/02/07/Kotlin-DelegatedProperties/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2018/02/07/Kotlin-DelegatedProperties/index.html",
+    "headline": "Kotlin Delegated Properties",
+    "datePublished": "Wed Feb 07 2018 16:11:50 GMT+0800",
+    "dateModified": "Wed Feb 07 2018 16:12:45 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "wusp",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/wusp.jpg"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "wusp Blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": "",
+    "description": "",
+}
+</script>
 
 
     
@@ -284,647 +317,276 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Basics"><span class="post-toc-number">1.</span> <span class="post-toc-text">Basics</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#标准代理属性"><span class="post-toc-number">2.</span> <span class="post-toc-text">标准代理属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#lazy"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">lazy</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#observable-vetoable-观察者模式"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">observable/vetoable 观察者模式</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#map"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">map</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义代理属性"><span class="post-toc-number">3.</span> <span class="post-toc-text">自定义代理属性</span></a></li></ol>
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/21/Dalvik-GC-Specification/">Dalvik-GC-Specification</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/21/Dalvik-GC-Specification/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 21, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Android/">Android</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/19/The-Beginning-of-Parallel-Programming/">The Beginning of Parallel Programming</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/19/The-Beginning-of-Parallel-Programming/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 19, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/18/TCP-DataFlow/">TCP-DataFlow</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            TC...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/18/TCP-DataFlow/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 18, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Network/">Network</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/18/TCP-Connection/">TCP-Connection</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/18/TCP-Connection/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 18, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Network/">Network</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/18/TCP-Timer/">TCP-Timer</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            TC...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/18/TCP-Timer/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 18, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Network/">Network</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/18/TCP-Basics-0/">TCP-Basics</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/18/TCP-Basics-0/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 18, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Network/">Network</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/14/Kotlin Extension — Method/">Kotlin Extension — Method</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/14/Kotlin Extension — Method/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 14, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Kotlin/">Kotlin</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/14/Kotlin-Inline1/">Kotlin Inline Function 1</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/14/Kotlin-Inline1/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 14, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Kotlin/">Kotlin</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/14/Kotlin Extension — Properties&amp;Companion/">Kotlin Extension — Properties&amp;Companion</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/14/Kotlin Extension — Properties&amp;Companion/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 14, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Kotlin/">Kotlin</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--3dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/14/Kotlin Extension — Declaring Extensions as Members/">Kotlin Extension — Declaring Extensions as Members</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <!-- <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/14/Kotlin Extension — Declaring Extensions as Members/" target="_self">阅读全文</a>
-        </span>
-    </div> -->
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/wusp.jpg" width="44px" height="44px" alt="wusp's avatar">
-            </div>
-            <div>
-                <strong>wusp</strong>
-                <span>1月 14, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Kotlin/">Kotlin</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-    <!-- Index nav -->
-        <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <a class="extend prev" rel="prev" href="/archives/"><button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-        </nav>
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                Kotlin Delegated Properties
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/wusp.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>wusp</strong>
+        <span>2月 07, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Kotlin Delegated Properties&url=http://yoursite.com/2018/02/07/Kotlin-DelegatedProperties/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Kotlin Delegated Properties&url=http://yoursite.com/2018/02/07/Kotlin-DelegatedProperties/index.html&via=wusp" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/07/Kotlin-DelegatedProperties/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/07/Kotlin-DelegatedProperties/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
     
 </div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p><strong>Delegated Properties</strong>，代理属性。顾名思义，就是我们在同这一个属性进行交互的时候并操作属性本身，而是操作属性的<strong>代理类对象</strong>。<br>如果一个属性被按照以下的句法写成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val/var &lt;property name&gt;: &lt;Type&gt; by &lt;expression&gt;</span><br></pre></td></tr></table></figure>
+<p>那么这一个属性就是 <strong>代理类对象</strong>，<strong><em>by</em></strong> 后面的 <em>expression</em> 就是<strong>代理类对象</strong>。所有对属性 <em>get()</em> 或者 <em>set()</em> 方法的调用都会被转换成对代理类对象 <em>getValue()</em> 和 <em>setValue()</em> 方法的调用。</p>
+<h3 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h3><p><strong>Delegated Properties</strong> 的实现原理是属性的 <em>get() 和 set()</em> 方法都转换给了代理类执行。这一转换是在编译期 <strong>kotlinc</strong> 自动实现的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//假设我们写了一个类C，对属性prop 使用MyDelegate() 的代理。</span><br><span class="line">class C &#123;</span><br><span class="line">    var prop: Type by MyDelegate()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//经过 kotlinc 的编译，出来的.class文件中属性 prop 的结构会是这样</span><br><span class="line">class C &#123;</span><br><span class="line">    private val prop$delegate = MyDelegate()</span><br><span class="line">    var prop: Type</span><br><span class="line">        get() = prop$delegate.getValue(this, this::prop)</span><br><span class="line">        set(value: Type) = prop$delegate.setValue(this, this::prop, value)</span><br><span class="line">&#125;</span><br><span class="line">可以很明晰地看到，prop的 get() 和 set() 方法都是由代理类对象 prop$delegate的 getValue() 和 setValue() 方法来执行。</span><br></pre></td></tr></table></figure>
+<h3 id="标准代理属性"><a href="#标准代理属性" class="headerlink" title="标准代理属性"></a>标准代理属性</h3><p>代理类对象有三个标准的使用场景：</p>
+<ul>
+<li><strong><em>lazy</em></strong> 懒加载</li>
+<li><strong><em>observable/vetoable</em></strong> 观察者模式</li>
+<li><strong><em>map</em></strong> 映射属性到Map</li>
+</ul>
+<h5 id="lazy"><a href="#lazy" class="headerlink" title="lazy"></a>lazy</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//lazy方法声明在kotlin.Lazy.kt当中</span><br><span class="line">val lazyValue: String by lazy &#123;</span><br><span class="line">    &quot;Hello&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过这样的写法，<em>lazyValue</em> 便会拥有一个 Lazy 类型的代理类对象。<em>lazyValue</em> 会在自己的 <strong>get()</strong>方法第一次被调用时才执行初始化操作。 而<strong><em>lazy</em></strong> 后传给 Lazy 的lambda函数便是初始化函数；初始化函数的返回值便是 <em>lazyValue</em> 的值。<br><em>lazyValue</em> 的<strong>初始化lambda函数</strong> 只会执行一次，后续对 <em>lazyValue</em> 的 <strong>get()</strong> 方法调用会直接返回<strong>初始化lambda函数</strong> 中最后返回的值。<br><strong>lazy</strong> 的API能够让开发者在需要用到某个属性的时候再根据当时的具体信息去确定该属性具体的值。</p>
+<h5 id="observable-vetoable-观察者模式"><a href="#observable-vetoable-观察者模式" class="headerlink" title="observable/vetoable 观察者模式"></a>observable/vetoable 观察者模式</h5><p>这两个都是 <em>kotlin.properties.Delegates</em> 中的 inline函数，可以针对某个属性，在属性变化时对属性进行 <strong>“拦截”</strong>。<strong>vetoable</strong> 是属性<strong>变化前</strong>进行拦截；<strong>observable</strong> 是属性<strong>变化后</strong>进行拦截。</p>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var observerName: String by Delegates.observable(&quot;&lt;no name&gt;&quot;) &#123;</span><br><span class="line">    prop, old, new -&gt;   //prop 是 observerName本身</span><br><span class="line">    println(&quot;$old -&gt; $new&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var vetoName: String by Delegates.vetoable(&quot;&lt;no name&gt;&quot;) &#123;</span><br><span class="line">    prop, old, new -&gt;   //prop 是 vetoName本身</span><br><span class="line">    println(&quot;$old -&gt; $new&quot;)</span><br><span class="line">    false       //false 代表prop 依旧停留在旧的 old值上，不会改变为新的 new值。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对一个属性的变化进行监听在日常的开发需求中非常常见，如果你是一位Android App工程师，必定会知道官方还为此功能出了一个Library —— <strong>LiveData</strong>。比起LiveData, Kotlin stdlib中内嵌的 observable/vetoable 模式不仅仅让你只需要一行代码就实现对属性变化的监听，还能够对变化进行拦截。</p>
+<h5 id="map"><a href="#map" class="headerlink" title="map"></a>map</h5><p>在App的开发中，尤其是基于HTTP进行网络内容交换的开发中，JSON - DataEntity 之间的转换需求非常频繁，同时 JSON 经过转换之后的数据结构基本都说Map类型，因此Kotlin就出了一个 map 的代理类API，帮助轻松完成 Map 类型到 DataEntity 之间的转换。</p>
+<p>假设声明了一个实体类，实体类的属性使用 <strong>“by”</strong> 来指明需要映射到哪个 map上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class User(val map: Map&lt;String, Any?&gt;) &#123;</span><br><span class="line">    val name: String by map</span><br><span class="line">    val age: Int     by map</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个时候只需要往构造器里传入一个Map类型的数据结构，Map中的值就会被自动映射到对应的属性上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val user = User(mapOf(</span><br><span class="line">    &quot;name&quot; to &quot;John Doe&quot;,</span><br><span class="line">    &quot;age&quot;  to 25</span><br><span class="line">))</span><br></pre></td></tr></table></figure>
+<p>你一定会想，这里是一个DataEntity实例 mapping 一个 Map, <strong>可否一个DataEntity mapping 多个Map呢？</strong><br>好消息是，可以！下面这个例子将为你展示如果将两个Map中的Key映射到同一个DataEntity当中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//DataEntity的声明</span><br><span class="line">class C(map1: Map&lt;String, Any?&gt;, map2: Map&lt;String, Any?&gt;) &#123;</span><br><span class="line">    val name1: String by map1</span><br><span class="line">    val name2: String by map2</span><br><span class="line">    val data: String by map2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//调用mapOf 来创建Map，并调用C的构造器</span><br><span class="line">val c = C(mapOf(&quot;name1&quot; to &quot;John&quot;, &quot;name2&quot; to &quot;Jason&quot;), mapOf(&quot;name2&quot; to &quot;Hello&quot;, &quot;data&quot; to &quot;World&quot;))</span><br></pre></td></tr></table></figure>
+<p>然后你发现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name1 = John</span><br><span class="line">name2 = Hello   //不是 &quot;Jason&quot; 的原因是通过 &quot;by&quot; 关键字，我们要求name2去map2中找Mapping</span><br><span class="line">data = World</span><br></pre></td></tr></table></figure>
+<h3 id="自定义代理属性"><a href="#自定义代理属性" class="headerlink" title="自定义代理属性"></a>自定义代理属性</h3><p>你已经知道如何使用标准代理属性了，下面将展示如何创建一个<strong>自定义代理属性</strong>。<br><strong><em>假设我们要为类C创建一个代理类 CDelegate，如果C中的属性使用了代理，则该属性的get()方法将会代理到代理类中</em></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 我们需要让CDelegate 继承自 ReadOnlyProperty，同时实现其中的 getValue() 方法</span><br><span class="line">// 同时，还要声明一个用 operator 修饰符修饰的 provideDelegate 方法，</span><br><span class="line">// 在后面创建 CDelegate 的实例对象时，provideDelegate 方法会被立即调用，并为实例对象创建代理对象。</span><br><span class="line">// 在本例中，代理对象只是 CDelegate，你可以通过返回不同的代理类对象从而代理到不同的代理中。</span><br><span class="line"></span><br><span class="line">class CDelegate : ReadOnlyProperty&lt;C, String&gt; &#123;</span><br><span class="line">    operator fun provideDelegate (thisRef: C, property: KProperty&lt;*&gt;) :ReadOnlyProperty&lt;C, kotlin.String&gt; &#123;</span><br><span class="line">        Log.d(Const.TAG, &quot;Calling providerDelegate()&quot;)</span><br><span class="line">        //可以在创建前进行一些检查</span><br><span class="line">        return CDelegate()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun getValue(thisRef: C, property: KProperty&lt;*&gt;): String &#123;</span><br><span class="line">        //在这里进行代理 get() 的计算和处理</span><br><span class="line">        Log.d(Const.TAG, &quot;Calling getValue()&quot;)</span><br><span class="line">        return &quot;End&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在使用时，只需要简单在需要被代理的属性后使用 <strong>by</strong> 修饰符来声明代理类对象即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class C &#123;</span><br><span class="line">    val c by CDelegate()</span><br><span class="line"></span><br><span class="line">    fun call() &#123;</span><br><span class="line">        Log.d(Const.TAG, &quot;c value is: $c&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在创建完 <strong><em>c</em></strong> 之后，所有对其 <em>get()</em> 方法的调用都会被代理到 <strong>CDelegate</strong> 的 <strong>getValue()</strong> 方法当中。</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 gitcoment -->
+<div id="gitment-comment">
+    <!-- Gitment 评论框 -->
+<div id="container"></div>
+</div>
+<style>
+    #gitment-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        //id: '页面 ID', // 可选。默认为 location.href
+        // id: 'Kotlin Delegated Properties'
+        owner: 'wusp',
+        repo: 'wusp.github.io',
+        oauth: {
+            client_id: 'cf3aa4df893d2a607397',
+            client_secret: 'ea14eb0d93e926c0bb54eb827f24877a0091e129',
+        },
+    })
+    gitment.render('container')
+</script>
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/02/07/Kotlin-Generics/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/02/05/SQLiteDatabase3-App/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
