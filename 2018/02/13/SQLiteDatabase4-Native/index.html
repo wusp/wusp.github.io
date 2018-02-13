@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            SQLiteDatabase4 连接建立、写入DB —— Native简介 | 
+        
+        wusp Blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="wusp Blog">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/02/13/SQLiteDatabase4-Native/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="wusp Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com/2018/02/13/SQLiteDatabase4-Native/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="SQLiteDatabase4 连接建立、写入DB —— Native简介 | wusp Blog">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="">
+    
+
+    
+        <meta property="article:published_time" content="Tue Feb 13 2018 22:07:57 GMT+0800">
+        <meta property="article:modified_time" content="Tue Feb 13 2018 22:22:02 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yoursite.com/2018/02/13/SQLiteDatabase4-Native/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2018/02/13/SQLiteDatabase4-Native/index.html",
+    "headline": "SQLiteDatabase4 连接建立、写入DB —— Native简介",
+    "datePublished": "Tue Feb 13 2018 22:07:57 GMT+0800",
+    "dateModified": "Tue Feb 13 2018 22:22:02 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "wusp",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/wusp.jpg"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "wusp Blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": "",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Basics"><span class="post-toc-number">1.</span> <span class="post-toc-text">Basics</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#VFS"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">VFS</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BTree"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">BTree</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Pager"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Pager</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#结构"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">结构</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多进程-多线程访问"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">多进程/多线程访问</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#锁"><span class="post-toc-number">1.3.2.0.1.</span> <span class="post-toc-text">锁</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#写入数据库文件"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">写入数据库文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#Rollback-记录"><span class="post-toc-number">1.3.3.0.1.</span> <span class="post-toc-text">Rollback 记录</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#锁获取"><span class="post-toc-number">1.3.3.0.2.</span> <span class="post-toc-text">锁获取</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#写入"><span class="post-toc-number">1.3.3.0.3.</span> <span class="post-toc-text">写入</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建连接、写入数据库源码解析"><span class="post-toc-number">2.</span> <span class="post-toc-text">创建连接、写入数据库源码解析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#连接建立"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">连接建立</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#写入-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">写入</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                SQLiteDatabase4 连接建立、写入DB —— Native简介
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/wusp.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>wusp</strong>
+        <span>2月 13, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=SQLiteDatabase4 连接建立、写入DB —— Native简介&url=http://yoursite.com/2018/02/13/SQLiteDatabase4-Native/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=SQLiteDatabase4 连接建立、写入DB —— Native简介&url=http://yoursite.com/2018/02/13/SQLiteDatabase4-Native/index.html&via=wusp" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/13/SQLiteDatabase4-Native/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/13/SQLiteDatabase4-Native/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h2><h3 id="VFS"><a href="#VFS" class="headerlink" title="VFS"></a>VFS</h3><p><strong>Virtual File System</strong>，虚拟文件系统通过Unix上标准的系统调用（Syscall）来读写位于不同物理介质上的不同文件系统，为各类文件系统提供了一套统一的API接口。<br><img src="/2018/02/13/SQLiteDatabase4-Native/VFS_level.jpg" title="VFS层次"></p>
+<p>文件系统一般需要经历几个阶段来具备被操作系统读写的能力：</p>
+<ul>
+<li><strong>创建</strong>：通过某种方式将磁盘（Disk）格式化并建立文件系统。在建立文件系统时还会让磁盘里写入文件系统的控制信息。</li>
+<li><strong>注册</strong>：各文件系统声明自己能够被操作系统内核支持，使内核能够记录文件系统的有关控制信息。注册又分为<strong>静态注册</strong>和<strong>动态注册</strong>。静态注册是指在编译内核时进行注册；动态注册指通过加载模块的方式进行注册。</li>
+<li><strong>安装</strong>：对应的是平时的<strong>mount</strong>操作，将文件系统挂载到操作系统根文件系统的目录树上。在这时候，操作系统便可以正常读写文件系统。</li>
+</ul>
+<p>在这之后，VFS接口便可以对该文件系统进行读写。<br>以 sys_read() 的层次为例，可以看到通过 vfs_read() 的转接，VFS向 sys_read() 屏蔽了具体文件系统读写方法的细节。以编程设计模式的角度来看，就像是在具体文件系统的 read() 上面加了一个 <strong>代理层(Proxy)</strong>，代理还可以将读写操作转到不同的文件系统上。<br><img src="/2018/02/13/SQLiteDatabase4-Native/VFS_read.jpg" title="VFS读写"></p>
+<h3 id="BTree"><a href="#BTree" class="headerlink" title="BTree"></a>BTree</h3><p>引用自<a href="https://zh.wikipedia.org/wiki/B%E6%A0%91" target="_blank" rel="noopener">wikipedia</a>的简介:</p>
+<blockquote>
+<p>在计算机科学中，B树（英语：B-tree）是一种自平衡的树，能够保持数据有序。这种数据结构能够让查找数据、顺序访问、插入数据及删除的动作，都在对数时间内完成。B树，概括来说是一个一般化的二叉查找树（binary search tree），可以拥有多于2个子节点。与自平衡二叉查找树不同，B树为系统大块数据的读写操作做了优化。B树减少定位记录时所经历的中间过程，从而加快存取速度。B树这种数据结构可以用来描述外部存储。这种数据结构常被应用在数据库和文件系统的实现上。</p>
+</blockquote>
+<h3 id="Pager"><a href="#Pager" class="headerlink" title="Pager"></a>Pager</h3><p>Pager 模块负责处理SQLite的并发操作控制。同时Pager 确保SQLite是”ACID” （Atomic 原子性的，Consistent 一致性的，Isolated 隔离的，Durable 持久性的），以便支持对<strong>事务(Transaction)</strong>的处理。我们对数据库文件的操作并不会直接作用到数据库文件本身，而是先与 Pager 打交道，再由 Pager 将修改写入到数据库文件。</p>
+<h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><p>Pager 将SQLite的.db文件划分成尺寸大小和规格一致的块（Blocks），每一个块也叫做 <strong>“Page”</strong>，每一个块的大小一般是1024字节。<br><br>在Unix系统上，Pager 通过 <strong>os_unix.c</strong>来为操作系统提供抽象的操作接口。</p>
+<h4 id="多进程-多线程访问"><a href="#多进程-多线程访问" class="headerlink" title="多进程/多线程访问"></a>多进程/多线程访问</h4><p>通过以下一些机制，Pager 能够高效地控制多进程/多线程条件下对SQLite数据库文件的访问。</p>
+<h6 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h6><p>通过加锁，Pager 能够确保进程/线程对数据库文件进行正确地操作，锁有可能处于几个状态当中：</p>
+<ul>
+<li><strong>UNLOCKED</strong>： db没有加锁，这样的db不用从中读取数据也不用向其中写入数据，该db中的数据被认为是可疑的。</li>
+<li><strong>SHARED</strong>： 该db允许读取数据但不允许写入数据，同一时间可以有多个进程通过持有该锁而从db中读取数据。但是当db的 <strong>SHARED</strong> 锁被持有时，不允许同一进程中的其他线程或者其他进程对db进行写入操作。</li>
+<li><strong>RESERVED</strong>：该锁同时只能被一个进程所获取。当一个进程正在从db中读取数据，并打算在未来的某一个时刻对db进行写入时可以获取该锁。<strong>RESERVED</strong> 锁存在时获取其他进程获取 <strong>SHARED</strong> 锁以便对db进行读取。</li>
+<li><strong>PENDING</strong>：一个进程允许获取该锁以便准备接下来对db的写入；如果db的 <strong>PENDING</strong> 锁被持有，则该db不允许新的进程或者线程获取 <strong>SHARED</strong> 锁。获取 <strong>PENDING</strong> 锁的进程并不能立即写入db，而是必须等待其他早已经被获得的 <strong>SHARED</strong> 执行完毕，之后该进程会获得 <strong>EXCLUSIVE</strong> 锁进行真正的写入。</li>
+<li><strong>EXCLUSIVE</strong>：获取该锁后便可以进行真正地写入；只有 <strong>EXCLUSIVE</strong> 锁能够写入db；<strong>EXCLUSIVE</strong> 是唯一一个互斥的，当一个 <strong>EXCLUSIVE</strong> 存在时，不允许存在其他锁 （UNLOCKED、SHARED、RESERVED）。</li>
+</ul>
+<h4 id="写入数据库文件"><a href="#写入数据库文件" class="headerlink" title="写入数据库文件"></a>写入数据库文件</h4><h6 id="Rollback-记录"><a href="#Rollback-记录" class="headerlink" title="Rollback 记录"></a>Rollback 记录</h6><p><strong>Rollback Journal</strong> 机制保证了在数据库操作出错时数据库文件的完整性。</p>
+<p>当Pager 修改数据库文件之前，会先保存一份当前数据库内容的记录，叫作 <strong>Rollback Journal</strong> 到当前数据库文件所在的目录下，文件名为 <strong>XXX(db name)-journal</strong>。除了保存数据库内容，还会保存当前数据库的文件大小，以便后面在写入数据库出错时能够正确恢复。</p>
+<p>Pager 需要Rollback Journal来恢复数据库文件时，Rollback Journal会被认为处于 <strong>hot</strong> 状态。当进程/线程在对数据库文件进行<strong>修改</strong>过程中因为 <strong>进程或者系统Crash</strong> 或者 <strong>突然断电</strong> 等原因而终止，Pager 会创建一个类型为 <strong>hot journal</strong> 的记录文件来帮助恢复。<br>当SQLite想要尝试从数据库文件中读取数据时，会先检查对应的 <strong>hot journal</strong>是否存在。如存在，则在读取数据之前会先执行数据库文件的rollback恢复操作。</p>
+<h6 id="锁获取"><a href="#锁获取" class="headerlink" title="锁获取"></a>锁获取</h6><p>对于一个想要写入数据库文件的进程，它必须按照以下顺序来获取锁：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHARED --&gt; RESERVED --&gt; PENDING --&gt; EXCLUSIVE</span><br></pre></td></tr></table></figure>
+<p>当一个进程/线程获取RESERVED锁之后，其他进程/线程无法获取RESERVED锁，其他进程/线程的数据库写入操作会执行失败，并返回<strong>SQLITE_BUSY</strong>错误。<br>在获取RESERVED锁之前，想要写入数据库文件的进程/线程会先创建一个 Rollback Journal，并将数据库中的内容都写入到 Rollback Journal 当中，此时其他进程/线程依旧可以从数据库文件中读取数据。</p>
+<h6 id="写入"><a href="#写入" class="headerlink" title="写入"></a>写入</h6><ul>
+<li>进程对 <strong>Page</strong> 的修改并不会立即写入到磁盘中而是保留在缓存上。只有当缓存中满了或者事务提交了commit之后才会写入到磁盘中的数据库文件中。此时进程/线程需要等待其他已经被获得的 <strong>SHARED锁</strong> 的读取执行完毕（获取 PENDING锁，等待获取EXCLUSIVE锁），并确保 Rollback Journal 已经完整创建。</li>
+<li><strong>如果因为缓存满而需要写入数据库文件</strong>，进程/线程并不会立即commit事务，而是会继续执行对其他 <strong>Page</strong> 的修改。因此，进程/线程所获取的 <strong>EXCLUSIVE锁</strong> 的生命周期可能非常长，从一开始执行写入直到最后事务执行commit。</li>
+<li>commit之后会立即删除 Rollback Journal（如果在写入过程中操作系统Crash会创建 Hot Journal）。当执行完<strong>将所有修改真正写入到磁盘中</strong>之后，便会释放<strong>EXCLUSIVE</strong>、<strong>PENDING</strong>。释放<strong>PENDING锁</strong>之后其他进程/线程便可以尝试获取<strong>SHARED锁</strong>从而读取最新的数据库文件中的数据。</li>
+</ul>
+<h2 id="创建连接、写入数据库源码解析"><a href="#创建连接、写入数据库源码解析" class="headerlink" title="创建连接、写入数据库源码解析"></a>创建连接、写入数据库源码解析</h2><p>SQLite暴露了诸多接口给Framework，从连接建立到读写再到事务操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// /framework/base/core/java/android/database/sqlite/SQLiteConnection.java</span><br><span class="line">// 平时Framework对数据库操作最终都是由这些JNI接口转寄到SQLite中</span><br><span class="line">    private static native int nativeOpen(String path, int openFlags, String label,</span><br><span class="line">            boolean enableTrace, boolean enableProfile);</span><br><span class="line">    private static native void nativeClose(int connectionPtr);</span><br><span class="line">    ...</span><br><span class="line">    private static native long nativeExecuteForLastInsertedRowId(</span><br><span class="line">            int connectionPtr, int statementPtr);</span><br><span class="line">    ...</span><br><span class="line">    private static native void nativeResetCancel(int connectionPtr, boolean cancelable);</span><br></pre></td></tr></table></figure>
+<p>篇幅所限，这里只介绍<strong>连接建立</strong>（数据库连接的存在是Framework操作DB的基础）和<strong>写入DB</strong>（经历 Pager 锁的全部状态、Rollback Journal，相对读取更复杂）。</p>
+<h3 id="连接建立"><a href="#连接建立" class="headerlink" title="连接建立"></a>连接建立</h3><p><strong>nativeOpen()</strong>，对应的JNI接口实现在 <em>/framework/base/core/jni/android_database_SQLiteConnection.cpp</em> 中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">static jint nativeOpen(JNIEnv* env, jclass clazz, jstring pathStr, jint openFlags,</span><br><span class="line">        jstring labelStr, jboolean enableTrace, jboolean enableProfile) &#123;</span><br><span class="line">    ... //sqliteFlags 检查和字符转换</span><br><span class="line">    sqlite3* db;</span><br><span class="line">    //通过 sqlite3_open_v2 方式打开数据库，还有sqlite3_open、sqlite3_open16等方式</span><br><span class="line">    int err = sqlite3_open_v2(path.string(), &amp;db, sqliteFlags, NULL);</span><br><span class="line">    if (err != SQLITE_OK) &#123;</span><br><span class="line">        throw_sqlite3_exception_errcode(env, err, &quot;Could not open database&quot;);</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    //1. 如果请求的拥有读写功能数据库连接，则需要检查数据库对象是否真的可以读写</span><br><span class="line">    //2. 设置busy handler来处理SQLITE_BUSY</span><br><span class="line">    //3. 注册android function</span><br><span class="line"></span><br><span class="line">    //将数据库对象包装到数据库连接当中</span><br><span class="line">    SQLiteConnection* connection = new SQLiteConnection(db, openFlags, path, label);</span><br><span class="line">    ... //设置 tracing、profiling 等功能</span><br><span class="line">    //返回</span><br><span class="line">    return reinterpret_cast&lt;jint&gt;(connection);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>无论使用何种方式打开数据库，最后都会进入到<strong>openDatabase()</strong><br>/external/sqlite/dist/sqlite3.c</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">static int openDatabase(</span><br><span class="line">  const char *zFilename, /* Database filename UTF-8 encoded */</span><br><span class="line">  sqlite3 **ppDb,        /* OUT: Returned database handle */</span><br><span class="line">  unsigned int flags,    /* Operational flags */</span><br><span class="line">  const char *zVfs       /* Name of the VFS to use */</span><br><span class="line">)&#123;</span><br><span class="line">  sqlite3 *db;                    /* Store allocated handle here */</span><br><span class="line">  int rc;                         /* Return code */</span><br><span class="line">  int isThreadsafe;               /* True for threadsafe connections */</span><br><span class="line">  char *zOpen = 0;                /* Filename argument to pass to BtreeOpen() */</span><br><span class="line">  char *zErrMsg = 0;              /* Error message from sqlite3ParseUri() */</span><br><span class="line">  *ppDb = 0;</span><br><span class="line"></span><br><span class="line">    ... //flag设置  </span><br><span class="line">  // SQLite DB 分配内存</span><br><span class="line">  db = sqlite3MallocZero( sizeof(sqlite3) );</span><br><span class="line">  //分配失败则跳转到 opendb_out</span><br><span class="line">  if( db==0 ) goto opendb_out;</span><br><span class="line">  if( isThreadsafe )&#123;   // 没有设置有关线程安全的标识符因此跟具体的SQLite配置有关</span><br><span class="line">    db-&gt;mutex = sqlite3MutexAlloc(SQLITE_MUTEX_RECURSIVE);</span><br><span class="line">    if( db-&gt;mutex==0 )&#123;</span><br><span class="line">      sqlite3_free(db);</span><br><span class="line">      db = 0;</span><br><span class="line">      goto opendb_out;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  //锁上db.mutex，再进入后面的执行</span><br><span class="line">  sqlite3_mutex_enter(db-&gt;mutex);</span><br><span class="line">  //两个db的backend, 第一个是主要操作的main, 第二个是temp，后面会看到</span><br><span class="line">  db-&gt;nDb = 2;</span><br><span class="line">  db-&gt;aDb = db-&gt;aDbStatic;</span><br><span class="line">    ... //设置db一些参数   </span><br><span class="line">  // 创建排序函数</span><br><span class="line">  createCollation(db, &quot;BINARY&quot;, SQLITE_UTF8, 0, binCollFunc, 0);</span><br><span class="line">  createCollation(db, &quot;BINARY&quot;, SQLITE_UTF16BE, 0, binCollFunc, 0);</span><br><span class="line">  createCollation(db, &quot;BINARY&quot;, SQLITE_UTF16LE, 0, binCollFunc, 0);</span><br><span class="line">  createCollation(db, &quot;RTRIM&quot;, SQLITE_UTF8, (void*)1, binCollFunc, 0);</span><br><span class="line">  if( db-&gt;mallocFailed )&#123;   //分配内存失败，跳转到opendb_out</span><br><span class="line">    goto opendb_out;</span><br><span class="line">  &#125;</span><br><span class="line">  // 默认的排序函数为 BINARY</span><br><span class="line">  db-&gt;pDfltColl = sqlite3FindCollSeq(db, SQLITE_UTF8, &quot;BINARY&quot;, 0);</span><br><span class="line">  assert( db-&gt;pDfltColl!=0 );</span><br><span class="line">  // 创建UTF-8 大小写不敏感的排序函数</span><br><span class="line">  createCollation(db, &quot;NOCASE&quot;, SQLITE_UTF8, 0, nocaseCollatingFunc, 0);</span><br><span class="line">  // 将数据库文件名、指定的VFS、flag 等信息转换成对应的 Uri</span><br><span class="line">  db-&gt;openFlags = flags;</span><br><span class="line">  rc = sqlite3ParseUri(zVfs, zFilename, &amp;flags, &amp;db-&gt;pVfs, &amp;zOpen, &amp;zErrMsg);</span><br><span class="line">  if( rc!=SQLITE_OK )&#123;  //Uri parse 出错</span><br><span class="line">    if( rc==SQLITE_NOMEM ) db-&gt;mallocFailed = 1;</span><br><span class="line">    sqlite3Error(db, rc, zErrMsg ? &quot;%s&quot; : 0, zErrMsg);</span><br><span class="line">    sqlite3_free(zErrMsg);</span><br><span class="line">    goto opendb_out;</span><br><span class="line">  &#125;</span><br><span class="line">  //打开数据库驱动并将其指向到 第一个database backend的pBt上</span><br><span class="line">  //这里是真实打开数据库文件的地方，使用BTree的方式打开数据库文件</span><br><span class="line">  //将创建的BTree 放到db-&gt;aDb[0].pBt当中。</span><br><span class="line">  rc = sqlite3BtreeOpen(db-&gt;pVfs, zOpen, db, &amp;db-&gt;aDb[0].pBt, 0,</span><br><span class="line">                        flags | SQLITE_OPEN_MAIN_DB);</span><br><span class="line">  if( rc!=SQLITE_OK )&#123;</span><br><span class="line">    if( rc==SQLITE_IOERR_NOMEM )&#123;</span><br><span class="line">      rc = SQLITE_NOMEM;</span><br><span class="line">    &#125;</span><br><span class="line">    sqlite3Error(db, rc, 0);</span><br><span class="line">    goto opendb_out;</span><br><span class="line">  &#125;</span><br><span class="line">  //获取database backend 对应的数据库模式</span><br><span class="line">  db-&gt;aDb[0].pSchema = sqlite3SchemaGet(db, db-&gt;aDb[0].pBt);</span><br><span class="line">  db-&gt;aDb[1].pSchema = sqlite3SchemaGet(db, 0);</span><br><span class="line">  db-&gt;aDb[0].zName = &quot;main&quot;;</span><br><span class="line">  db-&gt;aDb[0].safety_level = 3;</span><br><span class="line">  db-&gt;aDb[1].zName = &quot;temp&quot;;</span><br><span class="line">  db-&gt;aDb[1].safety_level = 1;</span><br><span class="line">    ...</span><br><span class="line">  //注册内建函数到db中，这个时候还没有从db中读取内容，</span><br><span class="line">  //第一次读取内容将是在db对象第一次被访问的时候</span><br><span class="line">  sqlite3RegisterBuiltinFunctions(db);</span><br><span class="line">    ...</span><br><span class="line">// 如何退出</span><br><span class="line">opendb_out:</span><br><span class="line">  sqlite3_free(zOpen);</span><br><span class="line">  if( db )&#123;</span><br><span class="line">    assert( db-&gt;mutex!=0 || isThreadsafe==0 || sqlite3GlobalConfig.bFullMutex==0 );</span><br><span class="line">    // 有控制线程安全的锁则需要退出</span><br><span class="line">    sqlite3_mutex_leave(db-&gt;mutex);</span><br><span class="line">  &#125;</span><br><span class="line">  rc = sqlite3_errcode(db);</span><br><span class="line">  assert( db!=0 || rc==SQLITE_NOMEM );</span><br><span class="line">  if( rc==SQLITE_NOMEM )&#123;</span><br><span class="line">    // 没有空间创建数据库对象，执行数据库关闭，释放资源</span><br><span class="line">    sqlite3_close(db);</span><br><span class="line">    db = 0;</span><br><span class="line">  &#125;else if( rc!=SQLITE_OK )&#123;</span><br><span class="line">    db-&gt;magic = SQLITE_MAGIC_SICK;</span><br><span class="line">  &#125;</span><br><span class="line">  //让ppDb指针指向db，供调用方使用。</span><br><span class="line">  *ppDb = db;</span><br><span class="line">  return sqlite3ApiExit(0, rc);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在SQLite3中，使用BTree 作为存储引擎来使用数据库，上面也使用<strong>sqlite3BtreeOpen()</strong> 的方法来打开数据库，下面看看在这其中都做了什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">SQLITE_PRIVATE int sqlite3BtreeOpen(</span><br><span class="line">  sqlite3_vfs *pVfs,      /* VFS to use for this b-tree */</span><br><span class="line">  const char *zFilename,  /* Name of the file containing the BTree database */</span><br><span class="line">  sqlite3 *db,            /* Associated database handle */</span><br><span class="line">  Btree **ppBtree,        /* Pointer to new Btree object written here */</span><br><span class="line">  int flags,              /* Options */</span><br><span class="line">  int vfsFlags            /* Flags passed through to sqlite3_vfs.xOpen() */</span><br><span class="line">)&#123;</span><br><span class="line">  BtShared *pBt = 0;             /* Shared part of btree structure */</span><br><span class="line">  Btree *p;                      /* Handle to return */</span><br><span class="line">  sqlite3_mutex *mutexOpen = 0;  /* Prevents a race condition. Ticket #3537 */</span><br><span class="line">  int rc = SQLITE_OK;            /* Result code from this function */</span><br><span class="line">  u8 nReserve;                   /* Byte of unused space on each page */</span><br><span class="line">  unsigned char zDbHeader[100];  /* Database header content */</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">  if( isMemdb )&#123;</span><br><span class="line">  //是否是 in-memory 的DB</span><br><span class="line">    flags |= BTREE_MEMORY;</span><br><span class="line">  &#125;</span><br><span class="line">  if( (vfsFlags &amp; SQLITE_OPEN_MAIN_DB)!=0 &amp;&amp; (isMemdb || isTempDb) )&#123;</span><br><span class="line">    vfsFlags = (vfsFlags &amp; ~SQLITE_OPEN_MAIN_DB) | SQLITE_OPEN_TEMP_DB;</span><br><span class="line">  &#125;</span><br><span class="line">  //分配内存</span><br><span class="line">  p = sqlite3MallocZero(sizeof(Btree));</span><br><span class="line">  if( !p )&#123;</span><br><span class="line">    return SQLITE_NOMEM;</span><br><span class="line">  &#125;</span><br><span class="line">  p-&gt;inTrans = TRANS_NONE;</span><br><span class="line">  p-&gt;db = db;</span><br><span class="line">  // 如果设置使用缓存则尝试寻找并使用缓存的BTree 共享内存，找到则可以直接返回，不再执行后续执行。</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">  // pBt = 0,  共享的BTree存储对象为空</span><br><span class="line">  ...</span><br><span class="line">pBt = sqlite3MallocZero( sizeof(*pBt) );</span><br><span class="line">if( pBt==0 )&#123;</span><br><span class="line">  rc = SQLITE_NOMEM;</span><br><span class="line">  goto btree_open_out;</span><br><span class="line">&#125;</span><br><span class="line">// 打开sqlite3 数据库文件</span><br><span class="line">rc = sqlite3PagerOpen(pVfs, &amp;pBt-&gt;pPager, zFilename,</span><br><span class="line">                      EXTRA_SIZE, flags, vfsFlags, pageReinit);</span><br><span class="line">if( rc==SQLITE_OK )&#123;    //打开成功，则继续读取该文件的头</span><br><span class="line">  rc = sqlite3PagerReadFileheader(pBt-&gt;pPager,sizeof(zDbHeader),zDbHeader);</span><br><span class="line">&#125;</span><br><span class="line">if( rc!=SQLITE_OK )&#123;</span><br><span class="line">  goto btree_open_out;</span><br><span class="line">&#125;</span><br><span class="line">pBt-&gt;openFlags = (u8)flags;</span><br><span class="line">pBt-&gt;db = db;</span><br><span class="line">// 注册数据库文件的 BusyHandler</span><br><span class="line">sqlite3PagerSetBusyhandler(pBt-&gt;pPager, btreeInvokeBusyHandler, pBt);</span><br><span class="line">p-&gt;pBt = pBt;</span><br><span class="line"></span><br><span class="line">pBt-&gt;pCursor = 0;</span><br><span class="line">pBt-&gt;pPage1 = 0;</span><br><span class="line">// 判断sqlite3 是否以只读方法打开</span><br><span class="line">if( sqlite3PagerIsreadonly(pBt-&gt;pPager) ) pBt-&gt;btsFlags |= BTS_READ_ONLY;</span><br><span class="line">...</span><br><span class="line">// 设置Pager Object的size</span><br><span class="line">rc = sqlite3PagerSetPagesize(pBt-&gt;pPager, &amp;pBt-&gt;pageSize, nReserve);</span><br><span class="line">// 将共享的BTree 对象添加进全局的 linkedlist</span><br><span class="line">// 将新的BTree 添加进同一个连接的共享Btree 对象链表中</span><br><span class="line">// 如何退出</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="写入-1"><a href="#写入-1" class="headerlink" title="写入"></a>写入</h3><p>以SQLiteConnection中的 <strong>executeForLastInsertedRowId</strong> JNI方法为例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">static jlong nativeExecuteForLastInsertedRowId(JNIEnv* env, jclass clazz,</span><br><span class="line">        jint connectionPtr, jint statementPtr) &#123;</span><br><span class="line">    // 将上层保存的int指针转换成SQLiteConnection指针</span><br><span class="line">    SQLiteConnection* connection = reinterpret_cast&lt;SQLiteConnection*&gt;(connectionPtr);</span><br><span class="line">    // 转换Statement指针</span><br><span class="line">    sqlite3_stmt* statement = reinterpret_cast&lt;sqlite3_stmt*&gt;(statementPtr);</span><br><span class="line">    int err = executeNonQuery(env, connection, statement);</span><br><span class="line">    return err == SQLITE_DONE &amp;&amp; sqlite3_changes(connection-&gt;db) &gt; 0</span><br><span class="line">            ? sqlite3_last_insert_rowid(connection-&gt;db) : -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>转换到 executeNonQuery 执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 通过 sqlite3_step 到SQLite中执行</span><br><span class="line">int err = sqlite3_step(statement);</span><br><span class="line">if (err == SQLITE_ROW) &#123;</span><br><span class="line">    throw_sqlite3_exception(env,</span><br><span class="line">            &quot;Queries can be performed using SQLiteDatabase query or rawQuery methods only.&quot;);</span><br><span class="line">&#125; else if (err != SQLITE_DONE) &#123;</span><br><span class="line">    throw_sqlite3_exception(env, connection-&gt;db);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后转换到SQLite中执行<br>sqlite3.c</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">SQLITE_API int sqlite3_step(sqlite3_stmt *pStmt)&#123;</span><br><span class="line">  int rc = SQLITE_OK;      /* Result from sqlite3Step() */</span><br><span class="line">  int rc2 = SQLITE_OK;     /* Result from sqlite3Reprepare() */</span><br><span class="line">  Vdbe *v = (Vdbe*)pStmt;  /* the prepared statement */</span><br><span class="line">  int cnt = 0;             /* Counter to prevent infinite loop of reprepares */</span><br><span class="line">  sqlite3 *db;             /* The database connection */</span><br><span class="line"></span><br><span class="line">  if( vdbeSafetyNotNull(v) )&#123;</span><br><span class="line">    return SQLITE_MISUSE_BKPT;</span><br><span class="line">  &#125;</span><br><span class="line">  db = v-&gt;db;</span><br><span class="line">  // 加锁</span><br><span class="line">  sqlite3_mutex_enter(db-&gt;mutex);</span><br><span class="line">  // 循环执行 sqlite3Step, 并最终转发到sqlite3VdbeExec() 中执行</span><br><span class="line">  while( (rc = sqlite3Step(v))==SQLITE_SCHEMA</span><br><span class="line">         &amp;&amp; cnt++ &lt; SQLITE_MAX_SCHEMA_RETRY</span><br><span class="line">         &amp;&amp; (rc2 = rc = sqlite3Reprepare(v))==SQLITE_OK )&#123;</span><br><span class="line">    // reset SQLiteStatement</span><br><span class="line">    sqlite3_reset(pStmt);</span><br><span class="line">    assert( v-&gt;expired==0 );</span><br><span class="line">  &#125;</span><br><span class="line">  // 如果执行出错则进行清理阶段</span><br><span class="line">  if( rc2!=SQLITE_OK &amp;&amp; ALWAYS(v-&gt;isPrepareV2) &amp;&amp; ALWAYS(db-&gt;pErr) )&#123;</span><br><span class="line">    const char *zErr = (const char *)sqlite3_value_text(db-&gt;pErr);</span><br><span class="line">    sqlite3DbFree(db, v-&gt;zErrMsg);</span><br><span class="line">    if( !db-&gt;mallocFailed )&#123;</span><br><span class="line">      v-&gt;zErrMsg = sqlite3DbStrDup(db, zErr);</span><br><span class="line">      v-&gt;rc = rc2;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      v-&gt;zErrMsg = 0;</span><br><span class="line">      v-&gt;rc = rc = SQLITE_NOMEM;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  rc = sqlite3ApiExit(db, rc);</span><br><span class="line">  sqlite3_mutex_leave(db-&gt;mutex);</span><br><span class="line">  return rc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后转发到 <strong>sqlite3VdbeExec</strong> 中执行，在 <strong>sqlite3VdbeExec</strong> 中会转换成 SQLite VDBE Program。有关VDBE Program 的内容请参考官方文档 <a href="https://sqlite.org/vdbe.html" target="_blank" rel="noopener">VDBE</a></p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 gitcoment -->
+<div id="gitment-comment">
+    <!-- Gitment 评论框 -->
+<div id="container"></div>
+</div>
+<style>
+    #gitment-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        //id: '页面 ID', // 可选。默认为 location.href
+        // id: 'SQLiteDatabase4 连接建立、写入DB —— Native简介'
+        owner: 'wusp',
+        repo: 'wusp.github.io',
+        oauth: {
+            client_id: 'cf3aa4df893d2a607397',
+            client_secret: 'ea14eb0d93e926c0bb54eb827f24877a0091e129',
+        },
+    })
+    gitment.render('container')
+</script>
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/02/07/Kotlin-Generics/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/wusp.jpg" alt="wusp's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        podussily@163.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Archives  -->
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/Kotlin/">Kotlin<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/Network/">Network<span class="sidebar_archives-count">4</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">21</span>
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+    <a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.help
+        <span class="mdl-button__ripple-container">
+          <span class="mdl-ripple"></span>
+        </span>
+      </div>
+    </a>
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+    <a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+             sidebar.about_theme
+            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://www.github.com/wusp" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>wusp Blog
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+   <!-- Gitment -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?Pki5+pzkluqu53g+ouMWpA==", true)</script>
+    
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+        
+            HanabiBrowser.clearColors();
+        
+        
+        HanabiBrowser.start('pre code',false);
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
