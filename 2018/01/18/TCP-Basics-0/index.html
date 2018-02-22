@@ -239,7 +239,7 @@
 
     
         <meta property="article:published_time" content="Thu Jan 18 2018 10:47:28 GMT+0800">
-        <meta property="article:modified_time" content="Tue Jan 30 2018 22:59:31 GMT+0800">
+        <meta property="article:modified_time" content="Thu Feb 22 2018 09:09:47 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -262,7 +262,7 @@
     "mainEntityOfPage": "http://yoursite.com/2018/01/18/TCP-Basics-0/index.html",
     "headline": "TCP-Basics",
     "datePublished": "Thu Jan 18 2018 10:47:28 GMT+0800",
-    "dateModified": "Tue Jan 30 2018 22:59:31 GMT+0800",
+    "dateModified": "Thu Feb 22 2018 09:09:47 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "wusp",
@@ -489,7 +489,7 @@
 <ul>
 <li><strong>数据分段</strong>。应用层传下来的数据会被TCP分成几段再往下传给IP，通常传给IP层的，已经<strong>添加过TCP包Header</strong>的信息单位也被称为<strong>报文段（segment）</strong>。</li>
 <li><strong>超时重传</strong>。在TCP连接的一端发送了一个报文段之后，会为这一个报文段启动一个定时器，如果在指定的时间内收不到另一端对这一报文段的<strong>ACK</strong>，TCP连接将会重发这一报文段。通常TCP在收到一个报文段之后并不会立即发送<strong>ACK</strong>，而是推迟几百毫秒之后再发送。</li>
-<li><strong>数据包检查和</strong>。TCP包的Header中添加了<strong>首部和数据</strong>的检验和，TCP连接的一端收到TCP数据包之后会对其进行检测，如果收到数据包的检验和有差错，将会<strong>直接丢弃这一个TCP数据包</strong>同时<strong>不ACK这一个数据包</strong>。</li>
+<li><strong>数据包检查和</strong>。TCP包的Header中添加了<strong>首部和数据</strong>(首部是pseudo-header，双端IP地址、零、TCP协议号6、TCP包长度)的检验和，TCP连接的一端收到TCP数据包之后会对其进行检测，如果收到数据包的检验和有差错，将会<strong>直接丢弃这一个TCP数据包</strong>同时<strong>不ACK这一个数据包</strong>。</li>
 <li><strong>重排序</strong>。如有必要，TCP将对收到的数据包进行重排序。由于IP数据报的转发是由路径上的路由器决定的，因此经常会出前后两个TCP数据包走的不同IP路由路径并且到达对端的先后顺序前后倒置。这时候便需要TCP对收到的数据包进行重新排序，否则<strong>乱序的已经被分段过的</strong>TCP数据包就无法重新组合成最开始应用层传下来的数据块。</li>
 <li><strong>流量控制</strong>。TCP连接的每一端都有固定大小的缓冲空间。在协议上，TCP的接收端只允许另一端发送接收端缓冲区能够接收的数据量。缓冲区限制不仅能防止较快的发送端导致较慢的接收端<strong>缓冲区溢出</strong>；还能提高整体的<strong>运行效率</strong>（TCP一般都在内核当中，而应用层则基本都是用户态的程序，如果TCP每收到一个数据包就传给应用层程序会导致操作系统频繁地在内核态和用户态之间转换）。</li>
 </ul>
@@ -500,7 +500,7 @@
 <li><strong>序列号</strong>：序列号是32bit的无符号数，到达上限后又从0开始。TCP用其对每个字节进行计数。<br>TCP连接发送数据的第一个字节序号为<strong>ISN（Initial Sequence Number）</strong>+ 1。</li>
 <li><strong>标识符</strong>：粉红色字段的标示位是是重要的标识符，当标识符被置为1时通常具备了特殊意义。<br><strong>URG:</strong>指明TCP包处于<strong>紧急（urgent）模式</strong>当中。<br><strong>ACK:</strong>确认序号有效，通知接收方其之前发送的某个或多个TCP包（由确认序号确定）已经被ACK。<br><strong>PSH:</strong>接收方应该尽快将这个报文段交给应用层。<br><strong>RST:</strong>重建连接，当TCP连接出现异常时，该标识符经常被使用。<br><strong>SYN:</strong>使用同步序号来请求建立一个新的TCP连接。<br><strong>FIN:</strong>发送端完成发送任务，请求断开TCP连接。</li>
 <li><strong>窗口</strong>：也被称为TCP拥塞窗口，用来通知接收端期望接收到的字节数，<strong>TCP流量控制（拥塞控制）</strong>的关键所在。</li>
-<li><strong>检验和</strong>：检验和覆盖了整个TCP报文段（首部+数据），接收端用其来验证字节流的完整性。这是一个强制性的字段，一定是由发端计算和存储，并有接收端进行验证。</li>
+<li><strong>检验和</strong>：检验和覆盖了整个TCP报文段（pseudo-header+数据），接收端用其来验证字节流的完整性。这是一个强制性的字段，一定是由发端计算和存储，并由接收端进行验证。</li>
 </ul>
 
         
@@ -564,7 +564,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2018/01/14/Kotlin Extension — Properties&Companion/" id="post_nav-older" class="next-content">
+        <a href="/2018/01/14/Kotlin Extension — Declaring Extensions as Members/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
