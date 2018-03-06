@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Cursor原理解析及自定义 | 
+        
+        wusp Blog
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="wusp Blog">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/03/06/Cursor/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="wusp Blog">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com/2018/03/06/Cursor/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Cursor原理解析及自定义 | wusp Blog">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="">
+    
+
+    
+        <meta property="article:published_time" content="Tue Mar 06 2018 16:00:36 GMT+0800">
+        <meta property="article:modified_time" content="Tue Mar 06 2018 16:07:52 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yoursite.com/2018/03/06/Cursor/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2018/03/06/Cursor/index.html",
+    "headline": "Cursor原理解析及自定义",
+    "datePublished": "Tue Mar 06 2018 16:00:36 GMT+0800",
+    "dateModified": "Tue Mar 06 2018 16:07:52 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "wusp",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/wusp.jpg"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "wusp Blog",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": "",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#IPC获取Cursor原理"><span class="post-toc-number">1.</span> <span class="post-toc-text">IPC获取Cursor原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一、IBulkCursor"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">一、IBulkCursor</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#二、如何拿到Cursor"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">二、如何拿到Cursor</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cursor操作原理"><span class="post-toc-number">2.</span> <span class="post-toc-text">Cursor操作原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#一、Client中Cursor对象调用关系"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">一、Client中Cursor对象调用关系</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#二、CursorWindow读取原理"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">二、CursorWindow读取原理</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自定义Cursor"><span class="post-toc-number">3.</span> <span class="post-toc-text">自定义Cursor</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#通过ContentProvider获取"><span class="post-toc-number">3.0.1.</span> <span class="post-toc-text">通过ContentProvider获取</span></a></li></ol></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Cursor原理解析及自定义
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/wusp.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>wusp</strong>
+        <span>3月 06, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Cursor原理解析及自定义&url=http://yoursite.com/2018/03/06/Cursor/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Cursor原理解析及自定义&url=http://yoursite.com/2018/03/06/Cursor/index.html&via=wusp" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/03/06/Cursor/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/03/06/Cursor/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>这篇文章会分成两部分进行讲述以帮助大家更好地理解Cursor的使用方法。</p>
+<ul>
+<li><strong>IPC获取Cursor原理、Cursor读取原理</strong><br> 了解通过ContentProvider获取Cursor的原理以及过程中一些关键点；了解Client在拿到Cursor资源对象后获取其中内容、移动游标位置的原理。</li>
+<li><strong>自定义Cursor</strong><br> 如何通过ContentProvider返回一个自定义Cursor。</li>
+</ul>
+<h2 id="IPC获取Cursor原理"><a href="#IPC获取Cursor原理" class="headerlink" title="IPC获取Cursor原理"></a>IPC获取Cursor原理</h2><p>   从通过ContentResolver拿到 ContentProvider.query() 返回的查询结果Cursor，到操作Cursor的位置指针获取其中的内容，再到最后通过 close() 方法释放Cursor资源。这一系列过程中涵盖了大量的Binder IPC操作，本小节通过解析源码和IPC通信的过程来揭示<strong>Client APP是如何拿到可使用Cursor对象的。</strong></p>
+<h4 id="一、IBulkCursor"><a href="#一、IBulkCursor" class="headerlink" title="一、IBulkCursor"></a>一、IBulkCursor</h4><p>IBulkCursor Binder接口为Cursor IPC操作提供<strong>控制支持</strong>，是除去Cursor本身最重要的辅助类。例如在Client APP中使用 Cursor.moveToNext() 移动指示行的标识位置时，正是通过 IBulkCursor.onMove() 映射到Server端的Cursor对象。</p>
+<p><strong>IBulkCursor Binder IPC接口及实现类:</strong><br><img src="/2018/03/06/Cursor/CursorBinderIPC.jpg" title="CursorBinderIPC"></p>
+<ul>
+<li><strong>CursorToBulkCursorAdaptor</strong> 定义为final类，是IBulkCursor中所定义方法的具体实现所在。作用是<strong>接收Client对Cursor操作的IPC请求，完成远端操作对原始Cursor对象的映射。</strong></li>
+<li><strong>CursorToBulkCursorAdaptor</strong> 通过使用 <strong>监视器锁</strong> 来保证IPC调用时，IBulkCursor操作的原子性。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void close() &#123;</span><br><span class="line">    synchronized (mLock) &#123;</span><br><span class="line">        disposeLocked();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>举个例子：</strong><br>当在Client APP中使用Cursor的moveToNext()方法时，会调用到IBulkCursor接口的onMove()方法，通过Binder IPC到CursorToBulkCursorAdaptor的onMove()实现中。<br><strong>CursorToBulkCursorAdaptor.java</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void onMove(int position) &#123;</span><br><span class="line">    synchronized (mLock) &#123;</span><br><span class="line">        throwIfCursorIsClosed();</span><br><span class="line"></span><br><span class="line">        mCursor.onMove(mCursor.getPosition(), position);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由此完成Client APP在移动Cursor的游标位置后，真正Cursor对象的游标位置也能随之移动。</p>
+<p><strong>NOTE: 需要注意的是在当前Android SDK的实现里面，客户端对Cursor的读取操作和游标移动都是代理给了其中的CursorWindow。IBulkCursor以及Native、Proxy也都是隐藏的API。对于应用工程师来说，了解到在执行Cursor的requery()、close()等方式时会调用IBulkCursor的相关接口通知Server端就够了。</strong></p>
+<h4 id="二、如何拿到Cursor"><a href="#二、如何拿到Cursor" class="headerlink" title="二、如何拿到Cursor"></a>二、如何拿到Cursor</h4><p><strong>Note: 这里不涉及Server如何查询生成Cursor对象，以及Client如何通过ContentResolver调用ContentProvider接口（这些都是ContentProvider的内容）。</strong></p>
+<p><strong>1.</strong>在<strong>ContentProviderNative</strong>中，可以看到是如何将Cursor对象的操作句柄传送给Client APP的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">Cursor cursor = query(url, projection, selection, selectionArgs, sortOrder,</span><br><span class="line">        cancellationSignal);</span><br><span class="line">if (cursor != null) &#123;</span><br><span class="line">    CursorToBulkCursorAdaptor adaptor = new CursorToBulkCursorAdaptor(</span><br><span class="line">            cursor, observer, getProviderName());</span><br><span class="line">    BulkCursorDescriptor d = adaptor.getBulkCursorDescriptor();</span><br><span class="line"></span><br><span class="line">    reply.writeNoException();</span><br><span class="line">    reply.writeInt(1);</span><br><span class="line">    d.writeToParcel(reply, Parcelable.PARCELABLE_WRITE_RETURN_VALUE);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    reply.writeNoException();</span><br><span class="line">    reply.writeInt(0);</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>步骤:</p>
+<ul>
+<li>将query()生成的Cursor包装在<strong>控制辅助类CursorToBulkCursorAdaptor</strong>中。</li>
+<li>生成操作句柄BulkCursorDescriptor。</li>
+<li>将 <strong>成功标识符(1)</strong> 以及 BulkCursorDescriptor 放入Parcel中，写回给Client APP。</li>
+</ul>
+<p><strong>2.</strong>在<strong>ContentProviderProxy</strong>中，则可以看到是如何通过句柄生成一个可以被使用的Cursor对象并返回给调用者的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">mRemote.transact(IContentProvider.QUERY_TRANSACTION, data, reply, 0);</span><br><span class="line">DatabaseUtils.readExceptionFromParcel(reply);</span><br><span class="line">if (reply.readInt() != 0) &#123;</span><br><span class="line">    BulkCursorDescriptor d = BulkCursorDescriptor.CREATOR.createFromParcel(reply);</span><br><span class="line">    adaptor.initialize(d);  //adaptor的类型为BulkCursorToCursorAdaptor</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    adaptor.close();</span><br><span class="line">    adaptor = null;</span><br><span class="line">&#125;</span><br><span class="line">return adaptor;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>调用者拿到的是<strong>类型为BulkCursorToCursorAdaptor的Cursor对象。</strong>BulkCursorToCursorAdaptor适配器将IBulkCursor适配成Cursor，<strong>让Client APP在执行很多操作时完全感受不到IBulkCursor的IPC调用。</strong></p>
+<p><strong>3.</strong>BulkCursorDescriptor<br><img src="/2018/03/06/Cursor/BulkCursorDescriptor.jpg" title="BulkCursorDescriptor"></p>
+<ul>
+<li>通过句柄拿到了Cursor对象Binder IPC的操作接口IBulkCursor。<strong>Server端的IBulkCursor实现类对象CursorToBulkCursorAdaptor持有真正Cursor资源对象的引用</strong></li>
+<li>列名数组以及row数量等重要信息。</li>
+<li>CursorWindow。携带着多条Cursor row的数据结构,实现了Parcelable接口，可以通过Binder IPC在进程间传递。<strong>在Client APP中使用Cursor接口读取的内容便来自CursorWindow</strong>。</li>
+</ul>
+<h2 id="Cursor操作原理"><a href="#Cursor操作原理" class="headerlink" title="Cursor操作原理"></a>Cursor操作原理</h2><p>经过上面一个小节了解了Cursor及其关联对象是如何通过Binder IPC在Server/Client两端传递的。本小节就看看系统是如何在Client中使用通过ContentResolver拿到的Cursor对象。<br><strong>Cursor接口及其实现类图:</strong><br><img src="/2018/03/06/Cursor/CursorExtension.jpg" title="CursorExtension"><br>先对其中几个重要的类做一下说明：</p>
+<ul>
+<li><strong>AbstractCursor:</strong> 主要目标在于实现跟Cursor游标位置、Observer有关的一些操作。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">    public final boolean move(int offset) &#123;</span><br><span class="line">        return moveToPosition(mPos + offset);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public final boolean moveToFirst() &#123;</span><br><span class="line">        return moveToPosition(0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public final boolean moveToLast() &#123;</span><br><span class="line">        return moveToPosition(getCount() - 1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public final boolean moveToNext() &#123;</span><br><span class="line">        return moveToPosition(mPos + 1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public final boolean moveToPrevious() &#123;</span><br><span class="line">        return moveToPosition(mPos - 1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public final boolean isFirst() &#123;</span><br><span class="line">        return mPos == 0 &amp;&amp; getCount() != 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public final boolean isLast() &#123;</span><br><span class="line">        int cnt = getCount();</span><br><span class="line">        return mPos == (cnt - 1) &amp;&amp; cnt != 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>AbstractWindowedCursor:</strong><br><br>首先，作为AbstractCursor的直接子类，应该完成的最主要任务是实现从每一个Cursor row中获取相关信息的逻辑。如：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">    @Override</span><br><span class="line">    public int getInt(int columnIndex) &#123;</span><br><span class="line">        checkPosition();</span><br><span class="line">        return mWindow.getInt(mPos, columnIndex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public long getLong(int columnIndex) &#123;</span><br><span class="line">        checkPosition();</span><br><span class="line">        return mWindow.getLong(mPos, columnIndex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public float getFloat(int columnIndex) &#123;</span><br><span class="line">        checkPosition();</span><br><span class="line">        return mWindow.getFloat(mPos, columnIndex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public double getDouble(int columnIndex) &#123;</span><br><span class="line">        checkPosition();</span><br><span class="line">        return mWindow.getDouble(mPos, columnIndex);</span><br><span class="line">    &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>与MaxtrixCursor、SortCursor等不同的是，在这里所有的Cursor数据装载到<strong>CursorWindow</strong>中。</p>
+<h4 id="一、Client中Cursor对象调用关系"><a href="#一、Client中Cursor对象调用关系" class="headerlink" title="一、Client中Cursor对象调用关系"></a>一、Client中Cursor对象调用关系</h4><p>在Client中通过ContentResolver的query()方法拿到Cursor对象并不是前面看到通过Binder IPC返回的BulkCursorDescriptor对象生成的Cursor操作具体实现类BulkCursorToCursorAdaptor。而是外面包了一层<strong>装饰者CursorWrapperInner</strong>:<br><strong>ContentResolver.java</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// query() 方法节选</span><br><span class="line">Cursor qCursor;</span><br><span class="line">try &#123;</span><br><span class="line">    qCursor = unstableProvider.query(uri, projection,</span><br><span class="line">            selection, selectionArgs, sortOrder, remoteCancellationSignal);</span><br><span class="line">&#125; catch (DeadObjectException e) &#123;</span><br><span class="line">...</span><br><span class="line">    qCursor = stableProvider.query(uri, projection,</span><br><span class="line">            selection, selectionArgs, sortOrder, remoteCancellationSignal);</span><br><span class="line">&#125;</span><br><span class="line">if (qCursor == null) &#123;</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">CursorWrapperInner wrapper = new CursorWrapperInner(qCursor,</span><br><span class="line">        stableProvider != null ? stableProvider : acquireProvider(uri));</span><br><span class="line">stableProvider = null;</span><br><span class="line">return wrapper;</span><br></pre></td></tr></table></figure>
+<p><strong>CursorWrapperInner</strong>的作用是在释放Cursor资源时顺带减少Cursor关联的ContentProvider引用计数。稍微了解<strong>装饰者设计模式</strong>就可以一眼看出来真正执行Cursor接口相关方法的是传给CursorWrapperInner构造器中的 <strong>qCursor对象</strong>。<br>CursorWrapperInner的父类<strong>CursorWrapper</strong>也印证了这一点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">    public int getInt(int columnIndex) &#123;</span><br><span class="line">        return mCursor.getInt(columnIndex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public long getLong(int columnIndex) &#123;</span><br><span class="line">        return mCursor.getLong(columnIndex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public short getShort(int columnIndex) &#123;</span><br><span class="line">        return mCursor.getShort(columnIndex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getString(int columnIndex) &#123;</span><br><span class="line">        return mCursor.getString(columnIndex);</span><br><span class="line">    &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>跟上一小节 <strong>Binder IPC原理</strong> 串联起来，则Client在平时操作从ContentResolver拿到的Cursor对象时，本质就是访问通过ContentProvider IPC拿到的BulkCursorToCursorAdaptor。<br>通过前面的介绍，我们知道BulkCursorToCursorAdaptor是<strong>AbstractWindowedCursor</strong>的子类，则Client在访问Cursor中内容时，便是转换给CursorWindow对象来执行。该CursorWindow对象由ContentProvider的Server生成并返回给调用Client。</p>
+<h4 id="二、CursorWindow读取原理"><a href="#二、CursorWindow读取原理" class="headerlink" title="二、CursorWindow读取原理"></a>二、CursorWindow读取原理</h4><p><strong>1.</strong>一个包含了多条Cursor row的内存缓冲区。<br><strong>2.</strong>在Server端创建时处于<strong>可读写</strong>的状态，如果一直在该进程内使用也会一直是<strong>可读写</strong>；但是如果经过Parcel的IPC传送之后，在远端进程中只能是只读的状态。<br><strong>3.</strong>典型的<strong>生产者-消费者</strong>结构，在生产者Server端分配内存空间，填充数据然后发回给Client端，而Client APP仅仅读取其中的内容。<br><strong>4.</strong>无论读还是写都是native方法，Java只是包了一层Java API。<br><strong>以putLong()方法为例，看看是如何使用这片缓存区的:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//Java 方法</span><br><span class="line">public boolean putLong(long value, int row, int column) &#123;</span><br><span class="line">    acquireReference();</span><br><span class="line">    try &#123;</span><br><span class="line">        return nativePutLong(mWindowPtr, value, row - mStartPos, column);</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">        releaseReference();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//native 方法</span><br><span class="line">status_t CursorWindow::putLong(uint32_t row, uint32_t column, int64_t value) &#123;</span><br><span class="line">    if (mReadOnly) &#123;</span><br><span class="line">        return INVALID_OPERATION;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    FieldSlot* fieldSlot = getFieldSlot(row, column);</span><br><span class="line">    if (!fieldSlot) &#123;</span><br><span class="line">        return BAD_VALUE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fieldSlot-&gt;type = FIELD_TYPE_INTEGER;</span><br><span class="line">    fieldSlot-&gt;data.l = value;</span><br><span class="line">    return OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>mReadOnly为true时则不允许写入</strong>。mReadOnly在调用create()方法构造CursorWindow时会被赋值为false；在通过createFromParcel反序列化回CursorWindow时会被赋值为true。</li>
+<li>空间不足时则不允许写入，返回false。</li>
+<li>缓存区不是直接保存数值，而是保存一种数据结构FieldSlot。FieldSlot的数据结构如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">struct FieldSlot &#123;</span><br><span class="line">private:</span><br><span class="line">    int32_t type;   //类型描述</span><br><span class="line">    union &#123;</span><br><span class="line">        double d;   //float、double使用</span><br><span class="line">        int64_t l;  //int、long使用</span><br><span class="line">        struct &#123;    //blot、String、Null使用...</span><br><span class="line">            uint32_t offset;</span><br><span class="line">            uint32_t size;</span><br><span class="line">        &#125; buffer;</span><br><span class="line">    &#125; data;</span><br><span class="line"></span><br><span class="line">    friend class CursorWindow;</span><br><span class="line">&#125; __attribute((packed));</span><br></pre></td></tr></table></figure>
+<p>以上可得出结论：<strong>当使用AbstractWindowedCursor，移动游标位置时，不需要像其他Cursor那样还要Binder Call通知原Cursor移动游标位置。因为CursorWindow拥有一块共享的内存区域，只要能正确调整指向不同内存区域的位置指针，就能够拿到对应的值。</strong></p>
+<h2 id="自定义Cursor"><a href="#自定义Cursor" class="headerlink" title="自定义Cursor"></a>自定义Cursor</h2><p>对于Cursor的使用，按照使用区域的不同可以分成 <strong>生成进程内使用</strong> 和 <strong>跨进程使用</strong>。在生成Cursor进程内使用Cursor的场景很少，同时Android SDK本身也提供了很多API为这个场景提供支持（如上面提到的<strong>MatrixCursor</strong>、<strong>MergeCursor</strong>）。<br>因此这里我们只聚焦在Cursor最主要使用的场景 —— <strong>跨进程使用</strong>。<br>虽然根据获取的方式不同，跨进程使用还可以分为：</p>
+<ul>
+<li><strong>通过ContentProvider获取</strong></li>
+<li><strong>通过自定义Binder IPC接口获取</strong></li>
+</ul>
+<p>但是由于<strong>Cursor IPC传递的本质还是传递着CursorWindow</strong>，因此从数据流动的角度来说都是一样的。这里我想通过第一种方式就足以证明如何自定义一个在IPC过程中传送的Cursor。</p>
+<h4 id="通过ContentProvider获取"><a href="#通过ContentProvider获取" class="headerlink" title="通过ContentProvider获取"></a>通过ContentProvider获取</h4><p>通过ContentProvider获取Cursor流程一般都是这样的：通过ContentResolver查询到ContentProvider Binder IPC的接口，然后获取query() 调用返回的Cursor。第一小节的 <strong>IPC获取Cursor原理</strong> 亦是基于这一套流程进行分析。</p>
+<p><strong>1.实现一个继承自AbstractWindowedCursor的实现类</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class MyWindowedCursor(window: CursorWindow) : AbstractWindowedCursor() &#123;</span><br><span class="line">    init &#123;</span><br><span class="line">        setWindow(window)</span><br><span class="line">    &#125;</span><br><span class="line">    //定义Client拿到的Cursor的行数</span><br><span class="line">    override fun getCount(): Int &#123;</span><br><span class="line">        return window.numRows</span><br><span class="line">    &#125;</span><br><span class="line">    //定义Cursor的每一列的列名</span><br><span class="line">    override fun getColumnNames(): Array&lt;String&gt; &#123;</span><br><span class="line">        return arrayOf(&quot;key&quot;, &quot;value&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2.实现ContentProvider，并将填充好内容的CursorWindow装进Cursor中并返回</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">override fun query(uri: Uri, projection: Array&lt;String&gt;?, selection: String?,</span><br><span class="line">                   selectionArgs: Array&lt;String&gt;?, sortOrder: String?): Cursor? &#123;</span><br><span class="line">    val window = CursorWindow(&quot;CursorProvider&quot;)</span><br><span class="line">    // 必须先要设置每一行有多少列才能往里面添加数据</span><br><span class="line">    window.setNumColumns(2)</span><br><span class="line">    // 分配每一行的内存地址，建议每次需要新添加一行时新分配一行的内存。</span><br><span class="line">    window.allocRow()</span><br><span class="line">    // 行、列索引都是从零开始</span><br><span class="line">    window.putString(&quot;key1&quot;, 0, 0)</span><br><span class="line">    window.putLong(1, 0, 1)</span><br><span class="line">    window.allocRow()</span><br><span class="line">    window.putString(&quot;key2&quot;, 1, 0)</span><br><span class="line">    window.putLong(2, 1, 1)</span><br><span class="line">    Log.d(&quot;Test&quot;, &quot;current rows: $&#123;window.numRows&#125;&quot;)</span><br><span class="line">    return MyWindowedCursor(window)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ContentProvider的定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;provider</span><br><span class="line">    android:name=&quot;.CursorProvider&quot;</span><br><span class="line">    android:authorities=&quot;com.wusp.cursor&quot;</span><br><span class="line">    android:enabled=&quot;true&quot;</span><br><span class="line">    android:exported=&quot;true&quot;</span><br><span class="line">    android:multiprocess=&quot;false&quot;</span><br><span class="line">    android:process=&quot;:cursor_provider&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<p>至此，就因为完成了自定义Cursor最基本的实现。只要Client调用到该ContentProvider的query()接口，就能够拿到往<strong>自定义Cursor类MyWindowedCursor</strong>中填充的CursorWindow，并将其包装在<strong>CursorWrapperInner</strong>中。</p>
+<p><strong>3.测试</strong><br>在APP中运行下面的代码测试一下是否能正常拿到自定义Cursor类型中的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val uri: Uri = Uri.parse(&quot;content://com.wusp.cursor/test&quot;)</span><br><span class="line">val cursor = contentResolver.query(uri, null, null, null, null)</span><br><span class="line">Log.d(&quot;Test&quot;, &quot;Activity cursor count: $&#123;cursor.count&#125;, $&#123;cursor.columnCount&#125;&quot;)</span><br><span class="line">while (cursor.moveToNext()) &#123;</span><br><span class="line">    Log.d(&quot;Test&quot;, &quot;Cursor.Content: $&#123;cursor.getString(0)&#125; - $&#123;cursor.getInt(1)&#125;&quot;)</span><br><span class="line">&#125;</span><br><span class="line">cursor.close()</span><br></pre></td></tr></table></figure>
+<p>测试结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">D/Test: Activity cursor count: 2, 2</span><br><span class="line">D/Test: Cursor.Content: key1 - 1</span><br><span class="line">D/Test: Cursor.Content: key2 - 2</span><br></pre></td></tr></table></figure>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 gitcoment -->
+<div id="gitment-comment">
+    <!-- Gitment 评论框 -->
+<div id="container"></div>
+</div>
+<style>
+    #gitment-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        //id: '页面 ID', // 可选。默认为 location.href
+        // id: 'Cursor原理解析及自定义'
+        owner: 'wusp',
+        repo: 'wusp.github.io',
+        oauth: {
+            client_id: 'cf3aa4df893d2a607397',
+            client_secret: 'ea14eb0d93e926c0bb54eb827f24877a0091e129',
+        },
+    })
+    gitment.render('container')
+</script>
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/02/28/PallelProgramming-Hardware/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/wusp.jpg" alt="wusp's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        podussily@163.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Archives  -->
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/categories/Kotlin/">Kotlin<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/Network/">Network<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/并发编程/">并发编程<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">23</span>
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+    <a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.help
+        <span class="mdl-button__ripple-container">
+          <span class="mdl-ripple"></span>
+        </span>
+      </div>
+    </a>
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+    <a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+             sidebar.about_theme
+            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://www.github.com/wusp" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>wusp Blog
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+   <!-- Gitment -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?Pki5+pzkluqu53g+ouMWpA==", true)</script>
+    
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+        
+            HanabiBrowser.clearColors();
+        
+        
+        HanabiBrowser.start('pre code',false);
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
