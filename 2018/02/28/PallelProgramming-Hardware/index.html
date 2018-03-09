@@ -239,7 +239,7 @@
 
     
         <meta property="article:published_time" content="Wed Feb 28 2018 00:10:10 GMT+0800">
-        <meta property="article:modified_time" content="Wed Feb 28 2018 00:28:54 GMT+0800">
+        <meta property="article:modified_time" content="Fri Mar 09 2018 13:02:32 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -262,7 +262,7 @@
     "mainEntityOfPage": "http://yoursite.com/2018/02/28/PallelProgramming-Hardware/index.html",
     "headline": "并发编程-硬件基础",
     "datePublished": "Wed Feb 28 2018 00:10:10 GMT+0800",
-    "dateModified": "Wed Feb 28 2018 00:28:54 GMT+0800",
+    "dateModified": "Fri Mar 09 2018 13:02:32 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "wusp",
@@ -485,7 +485,7 @@
 <p>The performance of multiprocessor programs is highly dependent on synergy with the underlying hardware.</p>
 </blockquote>
 <h3 id="术语及概念"><a href="#术语及概念" class="headerlink" title="术语及概念"></a>术语及概念</h3><ul>
-<li><strong>CPU Cycle</strong>: 一般翻译为CPU时钟周期。指处理器<strong>获取并执行</strong>一个指令所耗费的时间。<br> 几种典型操作所占用的CPU时间片：<br>a. 访问CPU中的L1 Cache，1 ~ 2个cycle；<br>b. 访问L2 Cache，数十个cycle (更先进的L2，2017年，可以做到在十个cycle内完成访问)；<br>c. 为了防止指令重排序而加入的内存屏障，数百个cycle；<br>d. 访问主内存中的数据，近似内存屏障，数百个cycle。<br>e. page fault, 访问主内存出错，数百万个cycle。<br>f. preemption, 正在处理器中执行的线程被抢占而搁置或者移出，数亿个cycle。</li>
+<li><strong>CPU Cycle</strong>: 一般翻译为CPU时钟周期。指处理器<strong>获取并执行</strong>一个指令所耗费的时间。<br> 几种典型操作所占用的CPU时间片：<br>a. 访问CPU中的L1 Cache，1 ~ 2个cycle；<br>b. 访问L2 Cache，数十个cycle (更先进的L2，2017年，可以做到在十个cycle内完成访问)；<br>c. 为了防止指令重排序而加入的内存屏障，十几个cycle；<br>d. 访问主内存中的数据，一百个左右cycle。<br>e. page fault, 访问主内存出错，数百万个cycle。<br>f. preemption, 正在处理器中执行的线程被抢占而搁置或者移出，数亿个cycle。</li>
 <li><strong>Context Switch (Preemption)</strong>: 指一个处理器在运行一个线程一段时间后将线程搁置在一旁，转而去执行另一个线程。处理器这一个动作也被称为 <strong><em>deschedule</em></strong> 。<br> 被搁置的线程可能依旧停留在该处理器中但是暂停执行，也可能会被切出当前处理器，然后由另一个处理器继续执行。</li>
 <li><strong>Interconnect</strong>: 处理器同处理器之间，以及处理器同主内存之间的通信过程。</li>
 <li><strong>Main Memory</strong>: 主内存。主内存的结构是一组以 <strong>word</strong> （存储字）组成的数组，数组的索引也被称为 <strong>address</strong> （内存地址）。根据硬件平台的不同，一个word以及一个address可以是 32bit 或者 64bit。</li>
