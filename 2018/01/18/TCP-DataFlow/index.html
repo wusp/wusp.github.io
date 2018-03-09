@@ -239,7 +239,7 @@
 
     
         <meta property="article:published_time" content="Thu Jan 18 2018 11:16:52 GMT+0800">
-        <meta property="article:modified_time" content="Thu Feb 22 2018 11:48:15 GMT+0800">
+        <meta property="article:modified_time" content="Fri Mar 09 2018 12:07:36 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -262,7 +262,7 @@
     "mainEntityOfPage": "http://yoursite.com/2018/01/18/TCP-DataFlow/index.html",
     "headline": "TCP-DataFlow",
     "datePublished": "Thu Jan 18 2018 11:16:52 GMT+0800",
-    "dateModified": "Thu Feb 22 2018 11:48:15 GMT+0800",
+    "dateModified": "Fri Mar 09 2018 12:07:36 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "wusp",
@@ -487,7 +487,7 @@
 </blockquote>
 <p>这样的情况在TCP执行下载任务时非常常见。对于接收方来说，它只想要接收下载服务器发送来的数据，除了维持TCP数据发送的ACK报文，自己并不需要向服务器发送任何数据；因此接收端经常都是在接收到几个连续的数据包之后<strong>直接ACK最后一个数据包</strong>的序列号（相当于将这几个数据包合并ACK了）<br><strong>对于具体功能的实现与操作系统有关，不同的机器上可能很可能会观测到不同的时延。</strong><br>说是性能优化，很大程度上体现在以下几个方面：</p>
 <ul>
-<li><strong>减小接收端和发送端之间的网络流量消耗</strong>。一个TCP报文段通过TCP/IP协议族，封装成以太网帧之后，至少都对应64个字节（以太网数据：46 + 以太网帧首部+尾部：16）。这也意味着如果接收端需要ACK每一个发送端发来的TCP报文段，每一个ACK报文至少都会占用64个字节。<br>在一方只需要尽可能的发送数据流而另一方只需要尽可能的接收数据流的情况下，对网络带宽无疑不是一种极大的浪费。（对同一块数据，TCP分段越多，单纯ACK对TCP连接性能的损害越大）这时候，<strong>Delayed ACK</strong>无论是从<strong>传输效率</strong>还是<strong>流量节省</strong>方面，都是一种非常有效的性能提升手段。</li>
+<li><strong>减小接收端和发送端之间的网络流量消耗</strong>。一个TCP报文段通过TCP/IP协议族，封装成以太网帧之后，至少都对应62个字节（以太网数据：46 + 以太网帧首部+尾部：16）。这也意味着如果接收端需要ACK每一个发送端发来的TCP报文段，每一个ACK报文至少都会占用62个字节。<br>在一方只需要尽可能的发送数据流而另一方只需要尽可能的接收数据流的情况下，对网络带宽无疑不是一种极大的浪费。（对同一块数据，TCP分段越多，单纯ACK对TCP连接性能的损害越大）这时候，<strong>Delayed ACK</strong>无论是从<strong>传输效率</strong>还是<strong>流量节省</strong>方面，都是一种非常有效的性能提升手段。</li>
 <li><strong>提高TCP协议栈程序的运行效率</strong>。类似TCP这样的全双工通信，<strong>发送</strong>和<strong>接收</strong>经常会放在<strong>不同的线程</strong>中来执行。由于<strong>Delayed ACK</strong>的存在，Client减少了需要执行发送的次数，也就减少了程序在线程切换和数据同步方面的开销；类似的还有封装TCP报文段封装成以太网帧的消耗。</li>
 </ul>
 <p>在报文段数很多的时候，这些看起来微小的优化都能够演变成为显著的性能提升效果。</p>
